@@ -8,18 +8,20 @@
 </head>
 <body>
 
-  <header class="site-header">
-    <nav class="nav-bar">
-      <span class="brand">Asinki<span>Pc</span></span>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="specs.html">Specs</a></li>
-        <li><a href="delivery.html">Delivery</a></li>
-        <li><a href="order.html" class="active">Order</a></li>
-        <li><a href="team.html">Team</a></li>
-      </ul>
-    </nav>
+  <header id="main-header">
+    <div class="container">
+      <a href="index.html" class="logo">Asnki<span>PC</span></a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalog.html">Catalog</a></li>
+          <li><a href="specs.html">Specs Table</a></li>
+          <li><a href="delivery.html">Delivery Process</a></li>
+          <li><a href="order.html" class="active">Custom Order</a></li>
+          <li><a href="team.html">Our Team</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main class="container">
@@ -53,10 +55,10 @@
           <div class="form-field">
             <label for="build-type">Build Type</label>
             <select id="build-type" name="build-type">
-              <option value="gaming">Gaming Rig</option>
-              <option value="workstation">Content Creation Workstation</option>
-              <option value="office">Home / Office PC</option>
-              <option value="budget">Budget Build</option>
+              <option value="starter">Starter ($899)</option>
+              <option value="pro" selected>Pro ($1,599 — Most Popular)</option>
+              <option value="ultra">Ultra ($3,499)</option>
+              <option value="custom">Custom Configuration</option>
             </select>
           </div>
 
@@ -94,8 +96,7 @@
 
   <footer id="site-footer">
     <div class="footer-inner">
-      <span class="team-credit">© 2026 ForgeRig PC — Team [Your Team Name]</span>
-      <span class="team-credit">Team members: Aliya Kenzhebekova · Dias Serikov · Madina Tulegenova</span>
+      <span class="team-credit">Timur Yukhnovets, Asanali Toleukhan, Etmakhambetov Abdrakhman.</span>
     </div>
   </footer>
 

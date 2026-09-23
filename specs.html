@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AsnkiPC — PC Specifications</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/member3.css">
 </head>
 <body>
   <header id="main-header">
@@ -24,70 +25,162 @@
   </header>
 
 <main class="container">
-    <section class="content-header">
-        <h1>PC Specifications</h1>
-        <p class="highlight">Compare our PC configurations and choose the build that fits your needs.</p>
+
+  <div class="specs-grid">
+
+    <section class="specs-grid__header">
+      <h1>PC Specifications</h1>
+      <p class="highlight">Compare Starter, Pro and Ultra component-by-component and pick the build that fits your needs.</p>
     </section>
 
-    <section class="table-panel">
-        <h2>PC Configuration Comparison</h2>
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Specification</th>
-                        <th scope="col">Starter</th>
-                        <th scope="col">Pro</th>
-                        <th scope="col">Ultra</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">CPU</th>
-                        <td>Intel Core i3</td>
-                        <td>Intel Core i5</td>
-                        <td>Intel Core i7</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">GPU</th>
-                        <td>RTX 3050</td>
-                        <td>RTX 4060</td>
-                        <td>RTX 4070</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">RAM</th>
-                        <td>16 GB</td>
-                        <td>16 GB</td>
-                        <td>32 GB</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Storage</th>
-                        <td>512 GB SSD</td>
-                        <td>1 TB SSD</td>
-                        <td>2 TB SSD</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Target</th>
-                        <td>Study &amp; everyday use</td>
-                        <td>Gaming &amp; work</td>
-                        <td>High-end gaming</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Starting Price</th>
-                        <td>$699</td>
-                        <td>$999</td>
-                        <td>$1499</td>
-                    </tr>
-                </tbody>
-            </table>
+    <aside class="specs-grid__sidebar">
+      <h2>Jump to</h2>
+      <ul class="spec-nav">
+        <li><a href="#cpu">Processor</a></li>
+        <li><a href="#gpu">Graphics Card</a></li>
+        <li><a href="#memory">Memory</a></li>
+        <li><a href="#storage">Storage</a></li>
+        <li><a href="#pricing">Pricing &amp; Use Case</a></li>
+      </ul>
+      <div class="sidebar-note">
+        <p>Every tier can be customized part-by-part on the Custom Order page before checkout.</p>
+      </div>
+    </aside>
+
+    <div class="specs-grid__main">
+
+      <article class="spec-card" id="cpu">
+        <div class="spec-card__head">
+          <h3>Processor</h3>
+          <span class="spec-tag">CPU</span>
         </div>
-    </section>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Starter</th>
+              <th scope="col">Pro</th>
+              <th scope="col">Ultra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Intel Core i5-12400F</td>
+              <td>AMD Ryzen 7 7700X</td>
+              <td>Intel Core i9-14900K</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
 
-    <section class="info-box">
-        <h2>How to choose?</h2>
-        <p>Starter is suitable for study and everyday tasks. Pro provides a balance between performance and price, while Ultra is designed for demanding games and applications.</p>
-        <p>All configurations can be customized before ordering.</p>
-    </section>
+      <article class="spec-card" id="gpu">
+        <div class="spec-card__head">
+          <h3>Graphics Card</h3>
+          <span class="spec-tag">GPU</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Starter</th>
+              <th scope="col">Pro</th>
+              <th scope="col">Ultra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>RTX 4060 8GB</td>
+              <td>RTX 4070 Super 12GB</td>
+              <td>RTX 4090 24GB</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="spec-card" id="memory">
+        <div class="spec-card__head">
+          <h3>Memory</h3>
+          <span class="spec-tag">RAM</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Starter</th>
+              <th scope="col">Pro</th>
+              <th scope="col">Ultra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>16GB DDR4 3200MHz</td>
+              <td>32GB DDR5 6000MHz</td>
+              <td>64GB DDR5 6400MHz</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="spec-card" id="storage">
+        <div class="spec-card__head">
+          <h3>Storage</h3>
+          <span class="spec-tag">SSD</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Starter</th>
+              <th scope="col">Pro</th>
+              <th scope="col">Ultra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1TB NVMe M.2</td>
+              <td>2TB NVMe Gen4 M.2</td>
+              <td>4TB NVMe Gen4 M.2</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="spec-card wide" id="pricing">
+        <div class="spec-card__head">
+          <h3>Pricing &amp; Use Case</h3>
+          <span class="spec-tag">Overview</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">&nbsp;</th>
+              <th scope="col">Starter</th>
+              <th scope="col">Pro</th>
+              <th scope="col">Ultra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Best for</th>
+              <td>1080p esports &amp; everyday use</td>
+              <td>1440p gaming, streaming &amp; editing</td>
+              <td>4K ray-traced gaming &amp; ML workloads</td>
+            </tr>
+            <tr>
+              <th scope="row">Starting price</th>
+              <td>$899</td>
+              <td>$1,599</td>
+              <td>$3,499</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+    </div>
+
+    <div class="specs-grid__footer">
+      <p>All configurations can be customized part-by-part before ordering — swap the CPU, GPU, memory or storage to fit your budget.</p>
+      <a href="order.html" class="btn-primary">Configure &amp; Order</a>
+    </div>
+
+  </div>
+
 </main>
 
   <footer id="site-footer">

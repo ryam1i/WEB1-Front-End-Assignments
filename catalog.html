@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Yukhnovets Timur -->
+  <!-- Asanali Toleukhan — Member 2: Bootstrap spacing, buttons and form -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/member2.css">
 </head>
-<body>
+<body class="member2-page">
   <header id="main-header">
     <nav class="navbar navbar-expand-lg p-0" data-bs-theme="dark">
       <div class="container d-flex justify-content-between align-items-center">
@@ -57,60 +57,70 @@
     </nav>
   </header>
 
-  <main class="container">
-    <h1>Pre-Built Custom PCs</h1>
-    <p class="highlight">Precision-tuned desktop rigs engineered for pure performance, whisper-quiet thermals, and immediate delivery.</p>
+  <main class="container py-4 py-lg-5 px-2 px-sm-3">
+    <h1 class="mb-3">Pre-Built Custom PCs</h1>
+    <p class="highlight mb-4">Precision-tuned desktop rigs engineered for pure performance, whisper-quiet thermals, and immediate delivery.</p>
 
-    <div class="card-grid">
-      <article class="card">
-        <span class="tier-badge">1080p Esports</span>
-        <h3 class="tier-title">Starter</h3>
-        <p class="tier-price">Starting at $899</p>
-        <div class="card-img-wrap">
+    <!-- Task 6: a Bootstrap button group with ordinary HTML anchor links. -->
+    <div class="mb-3 mt-lg-4 px-sm-2">
+      <div class="btn-group" role="group" aria-label="Jump to a PC build">
+        <a class="btn btn-outline-primary btn-sm px-3 py-2" href="#starter">Starter</a>
+        <a class="btn btn-outline-primary btn-sm px-3 py-2" href="#pro">Pro</a>
+        <a class="btn btn-outline-primary btn-sm px-3 py-2" href="#ultra">Ultra</a>
+      </div>
+      <a href="specs.html" class="btn btn-secondary btn-sm px-3 py-2 ms-sm-2 mt-2 mt-sm-0">Compare specifications</a>
+    </div>
+    <!-- Task 4: Bootstrap spacing utilities, including responsive padding. -->
+    <div class="card-grid gap-4 mt-3 mb-5">
+      <article class="card p-3 p-lg-4" id="starter">
+        <span class="tier-badge px-3 py-1 mb-2">1080p Esports</span>
+        <h3 class="tier-title mb-1">Starter</h3>
+        <p class="tier-price mb-3">Starting at $899</p>
+        <div class="card-img-wrap p-2 mx-auto mb-3">
           <img src="images/pc-entry.jpg" alt="Starter Custom Gaming PC">
         </div>
-        <p>Reliable configuration engineered for high-FPS competitive gaming and everyday productivity.</p>
-        <ul>
-          <li><strong>CPU:</strong> Intel Core i5-12400F</li>
-          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4060 8GB</li>
-          <li><strong>RAM:</strong> 16GB DDR4 3200MHz</li>
-          <li><strong>SSD:</strong> 1TB NVMe M.2</li>
+        <p class="mb-3">Reliable configuration engineered for high-FPS competitive gaming and everyday productivity.</p>
+        <ul class="p-0 mt-0 mb-4">
+          <li class="py-2"><strong>CPU:</strong> Intel Core i5-12400F</li>
+          <li class="py-2"><strong>GPU:</strong> NVIDIA GeForce RTX 4060 8GB</li>
+          <li class="py-2"><strong>RAM:</strong> 16GB DDR4 3200MHz</li>
+          <li class="py-2"><strong>SSD:</strong> 1TB NVMe M.2</li>
         </ul>
-        <a href="order.html" class="btn-primary">Configure &amp; Order</a>
+        <a href="order.html#build-type" class="btn btn-primary btn-lg px-3 py-2 mt-auto">Configure &amp; Order</a>
       </article>
 
-      <article class="card">
-        <span class="tier-badge popular">Most Popular</span>
-        <h3 class="tier-title">Pro</h3>
-        <p class="tier-price">Starting at $1,599</p>
-        <div class="card-img-wrap">
+      <article class="card p-3 p-lg-4" id="pro">
+        <span class="tier-badge popular px-3 py-1 mb-2">Most Popular</span>
+        <h3 class="tier-title mb-1">Pro</h3>
+        <p class="tier-price mb-3">Starting at $1,599</p>
+        <div class="card-img-wrap p-2 mx-auto mb-3">
           <img src="images/pc-mid.jpg" alt="Pro Custom Gaming PC">
         </div>
-        <p>High-powered rig built for uncompromising 1440p 2K gaming at ultra settings, streaming, and editing.</p>
-        <ul>
-          <li><strong>CPU:</strong> AMD Ryzen 7 7700X</li>
-          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4070 Super 12GB</li>
-          <li><strong>RAM:</strong> 32GB DDR5 6000MHz</li>
-          <li><strong>SSD:</strong> 2TB NVMe Gen4 M.2</li>
+        <p class="mb-3">High-powered rig built for uncompromising 1440p 2K gaming at ultra settings, streaming, and editing.</p>
+        <ul class="p-0 mt-0 mb-4">
+          <li class="py-2"><strong>CPU:</strong> AMD Ryzen 7 7700X</li>
+          <li class="py-2"><strong>GPU:</strong> NVIDIA GeForce RTX 4070 Super 12GB</li>
+          <li class="py-2"><strong>RAM:</strong> 32GB DDR5 6000MHz</li>
+          <li class="py-2"><strong>SSD:</strong> 2TB NVMe Gen4 M.2</li>
         </ul>
-        <a href="order.html" class="btn-primary">Configure &amp; Order</a>
+        <a href="order.html#build-type" class="btn btn-primary btn-lg px-3 py-2 mt-auto">Configure &amp; Order</a>
       </article>
 
-      <article class="card">
-        <span class="tier-badge">4K Extreme</span>
-        <h3 class="tier-title">Ultra</h3>
-        <p class="tier-price">Starting at $3,499</p>
-        <div class="card-img-wrap">
+      <article class="card p-3 p-lg-4" id="ultra">
+        <span class="tier-badge px-3 py-1 mb-2">4K Extreme</span>
+        <h3 class="tier-title mb-1">Ultra</h3>
+        <p class="tier-price mb-3">Starting at $3,499</p>
+        <div class="card-img-wrap p-2 mx-auto mb-3">
           <img src="images/pc-ultra.jpg" alt="Ultra Custom Gaming PC">
         </div>
-        <p>Our flagship powerhouse engineered for 4K ray-traced gaming, 3D simulation, and machine learning.</p>
-        <ul>
-          <li><strong>CPU:</strong> Intel Core i9-14900K</li>
-          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4090 24GB</li>
-          <li><strong>RAM:</strong> 64GB DDR5 6400MHz</li>
-          <li><strong>SSD:</strong> 4TB NVMe Gen4 M.2</li>
+        <p class="mb-3">Our flagship powerhouse engineered for 4K ray-traced gaming, 3D simulation, and machine learning.</p>
+        <ul class="p-0 mt-0 mb-4">
+          <li class="py-2"><strong>CPU:</strong> Intel Core i9-14900K</li>
+          <li class="py-2"><strong>GPU:</strong> NVIDIA GeForce RTX 4090 24GB</li>
+          <li class="py-2"><strong>RAM:</strong> 64GB DDR5 6400MHz</li>
+          <li class="py-2"><strong>SSD:</strong> 4TB NVMe Gen4 M.2</li>
         </ul>
-        <a href="order.html" class="btn-primary">Configure &amp; Order</a>
+        <a href="order.html#build-type" class="btn btn-primary btn-lg px-3 py-2 mt-auto">Configure &amp; Order</a>
       </article>
     </div>
   </main>

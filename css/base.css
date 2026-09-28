@@ -28,16 +28,16 @@
 }
 
 :root {
-  --bg: #12151b;
-  --panel: #1b1f27;
-  --panel-alt: #21262f;
-  --border: #2c323c;
-  --text: #e7e9ec;
-  --text-dim: #9aa3af;
-  --accent: #1db954;
+  --bg: #000000;
+  --panel: #121212;
+  --panel-alt: #242424;
+  --border: #282828;
+  --text: #ffffff;
+  --text-dim: #b3b3b3;
+  --accent: #159c47;
   --accent-hover: #1ed760;
-  --accent-dim: #14722f;
-  --accent-2: #4fd1c5;
+  --accent-dim: #116832;
+  --accent-2: #48c7a8;
   --danger: #ef6f6c;
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -213,7 +213,6 @@ header.site-header,
   text-decoration: none;
 }
 
-/* ---------- Hero Banner ---------- */
 #hero-banner {
   background: linear-gradient(180deg, var(--panel-alt) 0%, var(--panel) 100%);
   border: 1px solid var(--border);
@@ -380,15 +379,15 @@ header.site-header,
 
 .btn-primary {
   background-color: var(--accent);
-  color: #06170c;
+  color: #000000;
   border-color: var(--accent);
 }
 
 .btn-primary:hover {
-  background-color: #3ddb75;
-  color: #06170c;
+  background-color: var(--accent-hover);
+  color: #000000;
   text-decoration: none;
-  box-shadow: 0 0 20px rgba(29, 185, 84, 0.4);
+  box-shadow: 0 0 20px rgba(30, 215, 96, 0.4);
   transform: translateY(-2px);
 }
 
@@ -693,9 +692,8 @@ table tbody td {
     color: var(--text-dim);
 }
 
-/* Alternating table rows */
 table tbody tr:nth-child(even) {
-    background-color: #20252d;
+    background-color: rgb(26, 26, 26);
 }
 
 table tbody tr:nth-child(odd) {
@@ -733,7 +731,6 @@ table tbody tr:hover {
     margin-bottom: 0;
 }
 
-/* Delivery page image */
 .delivery-image {
     display: block;
     width: min(100%, 520px);

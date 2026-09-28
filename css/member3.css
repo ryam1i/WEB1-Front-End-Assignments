@@ -116,6 +116,10 @@ html {
   outline-offset: 2px;
 }
 
+/* ---------- specs.html ---------- */
+.specs-sidebar {
+  top: 90px;
+  z-index: 10;   /* overrides sticky-lg-top's 1020: the sidebar must stay below the header */
 
 .specs-sidebar {
   top: 90px;
@@ -198,6 +202,7 @@ html {
   overflow-wrap: break-word;
 }
 
+/* pricing table keeps its width and scrolls sideways on phones */
 
 .spec-card.wide table {
   min-width: 34rem;
@@ -221,13 +226,16 @@ html {
   max-width: 60ch;
 }
 
+/* ---------- delivery.html ---------- */
 .delivery-carousel .carousel-inner {
   border: 1px solid var(--border);
   background-color: var(--bg);
 }
 
+/* Do NOT use the m-0 utility on slides: its !important overrides Bootstrap's
+   margin-right:-100%, which is what stacks slides on top of each other. */
 .delivery-carousel .carousel-item {
-  margin-bottom: 0;      
+  margin-bottom: 0;      /* cancels Bootstrap reboot's figure margin */
 }
 
 .delivery-carousel .carousel-inner {
@@ -239,7 +247,7 @@ html {
   right: 1rem;
   bottom: 1rem;
   padding-bottom: 0.5rem !important;
-  background-color: rgba(10, 12, 16, 0.85);   
+  background-color: rgba(10, 12, 16, 0.85);   /* keeps white text readable on any photo */
   color: #fff;
 }
 
@@ -258,6 +266,7 @@ html {
   font-weight: 600;
 }
 
+/* arrows get a dark disc so they stay visible over bright photos */
 .delivery-carousel .carousel-control-prev-icon,
 .delivery-carousel .carousel-control-next-icon {
   width: 2.75rem;
@@ -273,6 +282,7 @@ html {
   width: 12%;
 }
 
+/* indicators sit under the photo so they never cover the caption */
 .delivery-carousel .carousel-indicators {
   position: static;
   margin: 1rem 0 0;
@@ -304,6 +314,7 @@ html {
 }
 
 @media (max-width: 575.98px) {
+  /* phones: caption moves below the photo instead of covering it */
 
   .delivery-carousel .carousel-caption {
     position: static;
@@ -321,4 +332,5 @@ html {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
 }

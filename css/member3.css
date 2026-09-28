@@ -98,56 +98,50 @@ html {
   }
 }
 
-.specs-grid {
-  display: grid;
-  grid-template-columns: 250px minmax(0, 1fr);
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas:
-    "header header"
-    "sidebar main"
-    "footer footer";
-  gap: 1.5rem;
-  margin-top: 0.5rem;
-  min-width: 0;
+/* =========================================================
+   Member 3 — Etmakhambetov Abdrakhman
+   Task 3 (Bootstrap grid) · Task 7 (Carousel) · Task 10 (Accessibility)
+   Layout comes from Bootstrap classes in the HTML; this file only
+   holds the visual styling that Bootstrap does not provide.
+   ========================================================= */
+
+/* ---------- Accessibility: skip link + focus ---------- */
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 2000;
+  background-color: var(--accent);
+  color: #06170c;            /* 7.15:1 on --accent */
+  font-weight: 700;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
 }
 
-.specs-grid > * {
-  min-width: 0;
+.table-responsive:focus-visible,
+.spec-nav a:focus-visible,
+.carousel-control-prev:focus-visible,
+.carousel-control-next:focus-visible,
+.carousel-indicators [data-bs-target]:focus-visible {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 2px;
 }
 
-.specs-grid__header {
-  grid-area: header;
-}
-
-.specs-grid__header p {
-  margin-bottom: 0;
-}
-
-.specs-grid__sidebar {
-  grid-area: sidebar;
+/* ---------- specs.html ---------- */
+.specs-sidebar {
+  top: 90px;
   background-color: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 1.5rem 1.25rem;
-  align-self: start;
-  position: sticky;
-  top: 90px;
 }
 
-.specs-grid__sidebar h2 {
+.specs-sidebar h2 {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--text-dim);
   margin-bottom: 1rem;
-}
-
-.spec-nav {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-bottom: 1.5rem;
 }
 
 .spec-nav a {
@@ -169,50 +163,25 @@ html {
 
 .sidebar-note {
   border-top: 1px solid var(--border);
-  padding-top: 1rem;
   font-size: 0.85rem;
   color: var(--text-dim);
 }
 
 .sidebar-note p {
   font-size: 0.85rem;
-  margin-bottom: 0;
 }
 
-.specs-grid__main {
-  grid-area: main;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-  align-content: start;
-  min-width: 0;
-}
-
-.specs-grid__main > * {
-  min-width: 0;
-}
-
-.spec-card {
+.spec-card,
+.include-item,
+.cta-panel,
+.delivery-stat {
   background-color: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
+}
+
+.spec-card {
   scroll-margin-top: 90px;
-}
-
-.spec-card.wide {
-  grid-column: 1 / -1;
-}
-
-.spec-card__head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-}
-
-.spec-card__head h3 {
-  margin-bottom: 0;
 }
 
 .spec-tag {
@@ -226,11 +195,12 @@ html {
   padding: 0.2rem 0.6rem;
 }
 
+.spec-card__head h3 {
+  margin-bottom: 0;
+}
+
 .spec-card table {
   margin: 0;
-  width: 100%;
-  min-width: 0;
-  table-layout: fixed;
 }
 
 .spec-card table th,
@@ -239,112 +209,122 @@ html {
   overflow-wrap: break-word;
 }
 
-.spec-card.wide table th:first-child {
-  width: 30%;
+/* pricing table keeps its width and scrolls sideways on phones */
+.spec-card.wide table {
+  min-width: 34rem;
 }
 
-.specs-grid__footer {
-  grid-area: footer;
-  background-color: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 1.5rem 1.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+.include-item__num {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--accent-2);
+  margin-bottom: 0.5rem;
 }
 
-.specs-grid__footer p {
-  margin-bottom: 0;
+.include-item p,
+.cta-panel p {
+  font-size: 0.95rem;
+}
+
+.cta-panel p {
   max-width: 60ch;
 }
 
-@media (max-width: 800px) {
-  .specs-grid {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "header"
-      "sidebar"
-      "main"
-      "footer";
-  }
-
-  .specs-grid__sidebar {
-    position: static;
-  }
-
-  .spec-nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-top: 1.5rem;
-}
-
-.gallery__item {
-  position: relative;
-  margin: 0;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  border-radius: var(--radius-md);
+/* ---------- delivery.html ---------- */
+.delivery-carousel .carousel-inner {
   border: 1px solid var(--border);
   background-color: var(--bg);
 }
 
-.gallery__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.35s ease;
+.delivery-carousel .carousel-caption {
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  padding-bottom: 0.5rem !important;
+  background-color: rgba(10, 12, 16, 0.85);   /* keeps white text readable on any photo */
+  color: #fff;
 }
 
-.gallery__item:hover img {
-  transform: scale(1.06);
-}
-
-.gallery__item figcaption {
-  position: absolute;
-  inset: auto 0 0 0;
-  padding: 0.9rem 1rem 0.8rem;
-  background: linear-gradient(to top, rgba(10, 12, 16, 0.92), rgba(10, 12, 16, 0));
-  color: var(--text);
-  font-size: 0.88rem;
-  font-weight: 600;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.gallery__item:hover figcaption,
-.gallery__item:focus-within figcaption {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.gallery__item figcaption span {
+.carousel-caption__step {
   display: block;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
   color: var(--accent-2);
-  margin-bottom: 0.15rem;
 }
 
-@media (max-width: 800px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
+.carousel-caption__title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* arrows get a dark disc so they stay visible over bright photos */
+.delivery-carousel .carousel-control-prev-icon,
+.delivery-carousel .carousel-control-next-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  background-color: rgba(10, 12, 16, 0.75);
+  background-size: 50%;
+  border-radius: 50%;
+}
+
+.delivery-carousel .carousel-control-prev,
+.delivery-carousel .carousel-control-next {
+  opacity: 1;
+  width: 12%;
+}
+
+/* indicators sit under the photo so they never cover the caption */
+.delivery-carousel .carousel-indicators {
+  position: static;
+  margin: 1rem 0 0;
+  gap: 0.25rem;
+}
+
+.delivery-carousel .carousel-indicators [data-bs-target] {
+  width: 2rem;
+  height: 0.4rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background-color: var(--text-dim);
+  opacity: 1;
+}
+
+.delivery-carousel .carousel-indicators .active {
+  background-color: var(--accent);
+}
+
+.delivery-stat__value {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.delivery-stat p:last-child {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 575.98px) {
+  /* phones: caption moves below the photo instead of covering it */
+  .delivery-carousel .carousel-caption {
+    position: static;
+    margin-top: 0.5rem;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .delivery-carousel .carousel-indicators [data-bs-target] {
+    width: 1.2rem;
   }
 }
 
-@media (max-width: 480px) {
-  .gallery {
-    grid-template-columns: 1fr;
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

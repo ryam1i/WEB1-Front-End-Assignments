@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>AsnkiPC — PC Specifications</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/member3.css">
+</head>
+<body>
+  <a class="skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+  <header id="main-header">
+    <nav class="navbar navbar-expand-lg p-0" data-bs-theme="dark" aria-label="Main navigation">
+      <div class="container d-flex justify-content-between align-items-center">
+
+        <a class="navbar-brand logo m-0" href="index.html">
+          Asnki<span>PC</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+          <ul class="navbar-nav align-items-center gap-1">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalog.html">Catalog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="specs.html" aria-current="page">Specs Table</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="delivery.html">Delivery Process</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="order.html">Custom Order</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="team.html">Our Team</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container">
+
+    <!-- Task 3: 12-column grid. Row 1: header + sidebar (col-lg-3) + content (col-lg-9) -->
+    <div class="row g-4">
+
+      <section class="col-12" aria-labelledby="page-title">
+        <h1 id="page-title">PC Specifications</h1>
+        <p class="highlight mb-0">Compare Starter, Pro and Ultra component-by-component and pick the build that fits your needs.</p>
+      </section>
+
+      <aside class="col-12 col-lg-3" aria-labelledby="jump-title">
+        <div class="specs-sidebar sticky-lg-top p-4">
+          <h2 id="jump-title">Jump to</h2>
+          <nav aria-label="Specification sections">
+            <ul class="spec-nav list-unstyled d-flex flex-wrap flex-lg-column gap-1 mb-4">
+              <li><a href="#cpu">Processor</a></li>
+              <li><a href="#gpu">Graphics Card</a></li>
+              <li><a href="#memory">Memory</a></li>
+              <li><a href="#storage">Storage</a></li>
+              <li><a href="#pricing">Pricing &amp; Use Case</a></li>
+            </ul>
+          </nav>
+          <div class="sidebar-note pt-3">
+            <p class="mb-0">Every tier can be customized part-by-part on the Custom Order page before checkout.</p>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-12 col-lg-9">
+        
+        <div class="row g-4">
+
+        <article class="col-12 col-lg-6">
+          <div class="spec-card h-100 p-4" id="cpu">
+            <div class="spec-card__head d-flex justify-content-between align-items-baseline mb-3">
+              <h3 id="cpu-title">Processor</h3>
+              <span class="spec-tag">CPU</span>
+            </div>
+            <div class="table-responsive">
+              <table aria-labelledby="cpu-title">
+                <thead>
+                  <tr>
+                  <th scope="col">Starter</th>
+                  <th scope="col">Pro</th>
+                  <th scope="col">Ultra</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  <td>Intel Core i5-12400F</td>
+                  <td>AMD Ryzen 7 7700X</td>
+                  <td>Intel Core i9-14900K</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-12 col-lg-6">
+          <div class="spec-card h-100 p-4" id="gpu">
+            <div class="spec-card__head d-flex justify-content-between align-items-baseline mb-3">
+              <h3 id="gpu-title">Graphics Card</h3>
+              <span class="spec-tag">GPU</span>
+            </div>
+            <div class="table-responsive">
+              <table aria-labelledby="gpu-title">
+                <thead>
+                  <tr>
+                  <th scope="col">Starter</th>
+                  <th scope="col">Pro</th>
+                  <th scope="col">Ultra</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  <td>RTX 4060 8GB</td>
+                  <td>RTX 4070 Super 12GB</td>
+                  <td>RTX 4090 24GB</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-12 col-lg-6">
+          <div class="spec-card h-100 p-4" id="memory">
+            <div class="spec-card__head d-flex justify-content-between align-items-baseline mb-3">
+              <h3 id="memory-title">Memory</h3>
+              <span class="spec-tag">RAM</span>
+            </div>
+            <div class="table-responsive">
+              <table aria-labelledby="memory-title">
+                <thead>
+                  <tr>
+                  <th scope="col">Starter</th>
+                  <th scope="col">Pro</th>
+                  <th scope="col">Ultra</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  <td>16GB DDR4 3200MHz</td>
+                  <td>32GB DDR5 6000MHz</td>
+                  <td>64GB DDR5 6400MHz</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-12 col-lg-6">
+          <div class="spec-card h-100 p-4" id="storage">
+            <div class="spec-card__head d-flex justify-content-between align-items-baseline mb-3">
+              <h3 id="storage-title">Storage</h3>
+              <span class="spec-tag">SSD</span>
+            </div>
+            <div class="table-responsive">
+              <table aria-labelledby="storage-title">
+                <thead>
+                  <tr>
+                  <th scope="col">Starter</th>
+                  <th scope="col">Pro</th>
+                  <th scope="col">Ultra</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  <td>1TB NVMe M.2</td>
+                  <td>2TB NVMe Gen4 M.2</td>
+                  <td>4TB NVMe Gen4 M.2</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <article class="col-12">
+          <div class="spec-card wide h-100 p-4" id="pricing">
+            <div class="spec-card__head d-flex justify-content-between align-items-baseline mb-3">
+              <h3 id="pricing-title">Pricing &amp; Use Case</h3>
+              <span class="spec-tag">Overview</span>
+            </div>
+            <div class="table-responsive" tabindex="0" role="region" aria-labelledby="pricing-title">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col"><span class="visually-hidden">Attribute</span></th>
+                    <th scope="col">Starter</th>
+                    <th scope="col">Pro</th>
+                    <th scope="col">Ultra</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Best for</th>
+                    <td>1080p esports &amp; everyday use</td>
+                    <td>1440p gaming, streaming &amp; editing</td>
+                    <td>4K ray-traced gaming &amp; ML workloads</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Starting price</th>
+                    <td>$899</td>
+                    <td>$1,599</td>
+                    <td>$3,499</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        </div>
+      </div>
+    </div>
+
+    <section class="mt-5" aria-labelledby="included-title">
+      <h2 id="included-title">Included With Every Build</h2>
+      <div class="row g-4">
+      <article class="col-12 col-md-6 col-lg-4">
+        <div class="include-item h-100 p-4">
+          <span class="include-item__num" aria-hidden="true">01</span>
+          <h3 id="inc01">Up to 3-year warranty</h3>
+          <p class="mb-0">Genuine tier-1 components with full factory hardware warranty on every tier.</p>
+        </div>
+      </article>
+      <article class="col-12 col-md-6 col-lg-4">
+        <div class="include-item h-100 p-4">
+          <span class="include-item__num" aria-hidden="true">02</span>
+          <h3 id="inc02">24-hour stress test</h3>
+          <p class="mb-0">CPU, GPU and RAM are benchmarked continuously before your PC leaves the workshop.</p>
+        </div>
+      </article>
+      <article class="col-12 col-md-6 col-lg-4">
+        <div class="include-item h-100 p-4">
+          <span class="include-item__num" aria-hidden="true">03</span>
+          <h3 id="inc03">Tuned airflow</h3>
+          <p class="mb-0">Fan curves and cable routing are set by a certified builder for quiet, cool running.</p>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    
+    <section class="cta-panel d-flex flex-wrap align-items-center justify-content-between gap-3 mt-5 p-4" aria-label="Order call to action">
+      <p class="mb-0">All configurations can be customized part-by-part before ordering — swap the CPU, GPU, memory or storage to fit your budget.</p>
+      <a href="order.html" class="btn-primary">Configure &amp; Order</a>
+    </section>
+
+  </main>
+
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <span class="team-credit">Timur Yukhnovets, Asanali Toleukhan, Etmakhambetov Abdrakhman.</span>
+    </div>
+  </footer>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+</body>
+</html>

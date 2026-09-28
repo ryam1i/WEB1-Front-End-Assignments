@@ -121,9 +121,19 @@ html {
 
 .table-responsive:focus-visible,
 .spec-nav a:focus-visible,
-.carousel-control-prev:focus-visible,
-.carousel-control-next:focus-visible,
 .carousel-indicators [data-bs-target]:focus-visible {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+/* carousel arrows: draw the focus ring on the round icon, not on the tall button */
+.carousel-control-prev:focus-visible,
+.carousel-control-next:focus-visible {
+  outline: none;
+}
+
+.carousel-control-prev:focus-visible .carousel-control-prev-icon,
+.carousel-control-next:focus-visible .carousel-control-next-icon {
   outline: 3px solid var(--accent-2);
   outline-offset: 2px;
 }
@@ -236,6 +246,16 @@ html {
 .delivery-carousel .carousel-inner {
   border: 1px solid var(--border);
   background-color: var(--bg);
+}
+
+/* Do NOT use the m-0 utility on slides: its !important overrides Bootstrap's
+   margin-right:-100%, which is what stacks slides on top of each other. */
+.delivery-carousel .carousel-item {
+  margin-bottom: 0;      /* cancels Bootstrap reboot's figure margin */
+}
+
+.delivery-carousel .carousel-inner {
+  overflow: hidden;
 }
 
 .delivery-carousel .carousel-caption {

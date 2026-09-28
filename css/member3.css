@@ -5,7 +5,7 @@ html {
 #main-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1030;   /* above Bootstrap sticky-top (1020) so nothing scrolls over the header */
   background-color: var(--panel);
   border-bottom: 1px solid var(--border);
   width: 100%;
@@ -141,6 +141,7 @@ html {
 /* ---------- specs.html ---------- */
 .specs-sidebar {
   top: 90px;
+  z-index: 10;   /* overrides sticky-lg-top's 1020: the sidebar must stay below the header */
   background-color: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);

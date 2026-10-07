@@ -24,8 +24,8 @@ The website helps visitors choose and order a pre-built or custom PC: browse the
 
 | Member | Pages |
 |---|---|
-| Timur Yukhnovets | `index.html`, `catalog.html` |
-| Asanali Toleukhan | `order.html`, `team.html` |
+| Timur Yukhnovets | `index.html`, `team.html` (`css/member1.css`) |
+| Asanali Toleukhan | `catalog.html`, `order.html` (`css/member2.css`) |
 | Etmakhambetov Abdrakhman | `specs.html`, `delivery.html` (`css/member3.css`) |
 
 ### Etmakhambetov Abdrakhman — Specs & Delivery
@@ -33,9 +33,15 @@ The website helps visitors choose and order a pre-built or custom PC: browse the
 - `delivery.html` — Bootstrap carousel with 9 assembly and delivery steps (captions and indicators), plus delivery timeframe cards.
 - `css/member3.css` — styles for the header, cards, sidebar, tables and carousel.
 
-### Asanali Toleukhan — Order & Team
+### Timur Yukhnovets — Home & Team
+- `index.html` — landing page with a hero section, a call-to-action button and the "Why Choose Our Builds" advantage cards.
+- `team.html` — team page with member cards (avatar, role, interests).
+- `css/member1.css` — styles for the header, hero, advantage cards and team cards.
+
+### Asanali Toleukhan — Catalog & Order
+- `catalog.html` — Starter, Pro and Ultra build cards with images, key specifications, prices and "Configure & Order" buttons.
 - `order.html` — custom build order form (contact details, build type, budget, delivery method, accent color, notes) with a product image.
-- `team.html` — team page with member cards.
+- `css/member2.css` — styles for the catalog cards, form controls and buttons.
 
 ## Technologies
 
@@ -50,7 +56,7 @@ The site is responsive across three device types:
 
 - **Desktop** (992 px and up) — multi-column grids and an expanded navigation menu.
 - **Tablet** (768–991 px) — cards arranged in two columns.
-- **Mobile** (up to 576 px) — single-column layout, hamburger menu, and tables that scroll horizontally inside their cards.
+- **Mobile** (up to 576 px) — single-column layout, hamburger menu, and spec tables that shrink to fit their cards without horizontal scrolling.
 
 ## Project Structure
 
@@ -64,9 +70,9 @@ The site is responsive across three device types:
 ├── css/
 │   ├── style.css      # imports the base styles
 │   ├── base.css       # shared styles and variables
-│   ├── member1.css    # index, team
-│   ├── member2.css    # catalog, order
-│   └── member3.css    # specs, delivery
+│   ├── member1.css    # index, team (Timur)
+│   ├── member2.css    # catalog, order (Asanali)
+│   └── member3.css    # specs, delivery (Etmakhambetov)
 ├── images/
 └── README.md
 ```

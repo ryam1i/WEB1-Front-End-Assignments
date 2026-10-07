@@ -84,6 +84,25 @@ html {
   text-decoration: none;
 }
 
+body {
+    background-image: url("images/pc-ultra.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+body {
+    background-image: url("images/pc-mid.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+body {
+    background-image: url("images/pc-entry.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .member2-page .card-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
 .member2-page .card-grid .card { min-width: 0; }
 .member2-page [hidden] { display: none !important; }
@@ -113,3 +132,42 @@ html {
 
 .member2-page .card-grid .card[id] { scroll-margin-top: 7rem; }
 .member2-page .card-grid .card:target { border-color: var(--accent); }
+
+@media (max-width: 576px) {
+
+    .member2-page .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .member2-page .card {
+        padding: 1.25rem !important;
+    }
+
+    .member2-page .card-img-wrap {
+        height: 140px;
+    }
+
+    .member2-page .order-illustration {
+        width: 100%;
+        height: auto;
+    }
+
+    .member2-page .btn-group {
+        width: 100%;
+        display: flex;
+    }
+
+    .member2-page .btn-group .btn {
+        flex: 1;
+    }
+}
+.member2-page .order-illustration {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    display: block;
+    margin-inline: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}

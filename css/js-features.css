@@ -1,0 +1,56 @@
+/* Styles for JS features: background switcher (Task 4) and date/time block (Task 5) */
+
+/* smooth colour change */
+.js-bg-transition { transition: background-color .5s ease; }
+
+/* floating background widget */
+.js-bg-widget {
+  position: fixed;
+  right: 16px;
+  bottom: 90px;
+  z-index: 1030;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100vw - 32px);
+  padding: 10px 12px;
+  background: rgba(15, 20, 25, .88);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .35);
+  color: #fff;
+  font-size: .85rem;
+  backdrop-filter: blur(6px);
+}
+.js-btn {
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .2s ease, transform .1s ease;
+}
+.js-btn:hover { background: #2563eb; }
+.js-btn:active { transform: scale(.97); }
+.js-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.js-btn-secondary { background: #475569; }
+.js-btn-secondary:hover { background: #334155; }
+.js-bg-label { opacity: .8; }
+
+/* date & time block */
+.js-datetime {
+  margin-top: 6px;
+  font-size: .9rem;
+  color: inherit;
+}
+.js-datetime-label { opacity: .75; }
+.js-datetime time { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 576px) {
+  .js-bg-widget { left: 16px; right: 16px; justify-content: center; }
+  .js-bg-label { width: 100%; text-align: center; }
+}

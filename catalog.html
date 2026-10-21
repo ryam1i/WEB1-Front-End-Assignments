@@ -121,6 +121,97 @@
         <a href="order.html#build-type" class="btn btn-primary btn-lg px-3 py-2 mt-auto">Configure &amp; Order</a>
       </article>
     </div>
+   
+<section class="pc-faq" aria-labelledby="faq-title">
+  <h2 id="faq-title">Frequently Asked Questions</h2>
+
+  <div class="pc-faq-item">
+    <h3>
+      <button type="button" class="pc-faq-question"
+              aria-expanded="false" aria-controls="faq-answer-1">
+        Can I customize my PC?
+      </button>
+    </h3>
+    <div class="pc-faq-answer" id="faq-answer-1">
+      <div>
+        <p>
+          Yes! Open the Custom Order page to choose your build,
+          budget and additional requirements.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc-faq-item">
+    <h3>
+      <button type="button" class="pc-faq-question"
+              aria-expanded="false" aria-controls="faq-answer-2">
+        Are the computers tested before delivery?
+      </button>
+    </h3>
+    <div class="pc-faq-answer" id="faq-answer-2">
+      <div>
+        <p>
+          Yes. Every PC undergoes 24-hour CPU, GPU and RAM
+          stress tests before dispatch.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc-faq-item">
+    <h3>
+      <button type="button" class="pc-faq-question"
+              aria-expanded="false" aria-controls="faq-answer-3">
+        Which build should I choose?
+      </button>
+    </h3>
+    <div class="pc-faq-answer" id="faq-answer-3">
+      <div>
+        <p>
+          Starter is designed for 1080p gaming, Pro for 1440p,
+          and Ultra for demanding 4K games and creative work.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pc-subscribe" aria-labelledby="subscribe-title">
+  <h2 id="subscribe-title">Stay Updated</h2>
+  <p>Get news about our latest PC builds.</p>
+  <button type="button" class="btn btn-primary" id="open-subscribe">
+    Subscribe
+  </button>
+</section>
+
+<dialog id="subscribe-dialog" class="pc-popup"
+        aria-labelledby="popup-title">
+  <button type="button" id="close-subscribe"
+          class="pc-popup-close" aria-label="Close subscription form">
+    &times;
+  </button>
+
+  <h2 id="popup-title">Subscribe to AsnkiPC</h2>
+  <p>Enter your name and email below.</p>
+
+  <form id="subscribe-form">
+    <div class="form-field">
+      <label for="subscriber-name">Name</label>
+      <input type="text" id="subscriber-name" name="name"
+             autocomplete="given-name" required>
+    </div>
+
+    <div class="form-field">
+      <label for="subscriber-email">Email</label>
+      <input type="email" id="subscriber-email" name="email"
+             autocomplete="email" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Subscribe</button>
+    <p id="subscribe-message" role="status"></p>
+  </form>
+</dialog>
   </main>
 
   <footer id="site-footer">
@@ -133,5 +224,7 @@
 </script>
 <script src="js/background.js"></script>
 <script src="js/datetime.js"></script>
+<script src="js/accordion.js"></script>
+<script src="js/popup.js"></script>
 </body>
 </html>

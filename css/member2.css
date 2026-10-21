@@ -172,3 +172,129 @@ body {
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
 }
+.pc-faq {
+  margin-top: 3rem;
+}
+
+.pc-faq-item {
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.pc-faq-item h3 {
+  margin: 0;
+}
+
+.pc-faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pc-faq-question::after {
+  content: "+";
+  color: var(--accent);
+  font-size: 1.5rem;
+}
+
+.pc-faq-question[aria-expanded="true"]::after {
+  content: "−";
+}
+
+.pc-faq-question:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -4px;
+}
+
+.pc-faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.3s ease,
+              visibility 0.3s;
+}
+
+.pc-faq-answer.is-open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+
+.pc-faq-answer > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.pc-faq-answer p {
+  margin: 0;
+  padding: 0 1rem 1rem;
+  color: var(--text-dim);
+}
+
+/* Task 3: Subscription popup */
+.pc-subscribe {
+  margin-top: 2rem;
+}
+
+.pc-popup {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(440px, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  padding: 3rem 1.5rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  color: var(--text);
+}
+
+.pc-popup::backdrop {
+  background: rgb(0 0 0 / 75%);
+}
+
+.pc-popup-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.pc-popup-close:focus-visible {
+  outline: 2px solid var(--accent);
+}
+
+#subscribe-message {
+  margin: 1rem 0 0;
+  color: var(--accent-hover);
+}
+
+body.pc-popup-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-faq-answer {
+    transition: none;
+  }
+}

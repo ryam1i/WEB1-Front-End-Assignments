@@ -1,14 +1,9 @@
-/* Task 4 — Change background colour with JavaScript
-   Author: <your name> — replace with the team member who owns this task
-   - "Next colour" cycles through a predefined palette (+ the original look)
-   - "Random" picks a random dark colour (low lightness keeps text readable)
-   - The choice is remembered between pages via localStorage                 */
+
 (function () {
   'use strict';
 
   var STORAGE_KEY = 'asnkipc-bg';
 
-  // Predefined palette. The first item resets to the site's original background.
   var PALETTE = [
     { name: 'Default',      value: '' },
     { name: 'Midnight Blue', value: '#0b1d3a' },
@@ -23,20 +18,18 @@
   var index = 0;
   var button, randomButton, label;
 
-  /* ---------- helpers ---------- */
   function readSaved() {
     try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
   }
   function save(value) {
-    try { localStorage.setItem(STORAGE_KEY, value); } catch (e) { /* storage blocked */ }
+    try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
   }
 
   function applyColor(value, name) {
     var targets = [document.documentElement, document.body];
     targets.forEach(function (el) {
       if (value) {
-        // "background" shorthand also clears any gradient/image set in the CSS
-        el.style.setProperty('background', value, 'important');
+         el.style.setProperty('background', value, 'important');
       } else {
         el.style.removeProperty('background');
       }
@@ -47,12 +40,12 @@
 
   function randomDarkColor() {
     var h = Math.floor(Math.random() * 360);
-    var s = 35 + Math.floor(Math.random() * 30);   // 35–65 %
-    var l = 12 + Math.floor(Math.random() * 12);   // 12–24 % (dark => readable text)
+    var s = 35 + Math.floor(Math.random() * 30);   
+    var l = 12 + Math.floor(Math.random() * 12);   
     return 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
   }
 
-  /* ---------- handlers ---------- */
+
   function nextColor() {
     index = (index + 1) % PALETTE.length;
     applyColor(PALETTE[index].value, PALETTE[index].name);
@@ -61,12 +54,12 @@
     applyColor(randomDarkColor(), 'Random');
   }
 
-  /* ---------- UI (uses existing elements if the page already has them) ---------- */
+
   function buildUI() {
     button = document.getElementById('bg-color-btn');
     randomButton = document.getElementById('bg-random-btn');
     label = document.getElementById('bg-color-label');
-    if (button) return;                      // markup provided in HTML
+    if (button) return;                 
 
     var box = document.createElement('div');
     box.className = 'js-bg-widget';
@@ -88,11 +81,9 @@
     button.addEventListener('click', nextColor);
     if (randomButton) randomButton.addEventListener('click', randomColor);
 
-    // smooth fade between colours
     document.documentElement.classList.add('js-bg-transition');
     document.body.classList.add('js-bg-transition');
 
-    // restore previous choice
     var saved = readSaved();
     if (saved) {
       var found = PALETTE.findIndex(function (c) { return c.value === saved; });

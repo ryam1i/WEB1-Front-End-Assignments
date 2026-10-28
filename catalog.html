@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Asanali Toleukhan -->
+  <link rel="stylesheet" href="css/events.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -71,8 +71,20 @@
       </div>
       <a href="specs.html" class="btn btn-secondary btn-sm px-3 py-2 ms-sm-2 mt-2 mt-sm-0">Compare specifications</a>
     </div>
-    <div class="card-grid gap-4 mt-3 mb-5">
-      <article class="card p-3 p-lg-4" id="starter">
+    <div class="card-grid gap-4 mt-3 mb-5" id="product-grid">
+      <section class="event-controls" aria-label="Catalog tools">
+      <button type="button" id="show-time" class="btn btn-secondary">Show current time</button>
+      <output id="current-time" aria-live="polite">Click to show your local time.</output>
+      <label for="price-filter">Filter builds by price</label>
+      <select id="price-filter" class="form-select">
+        <option value="all">All prices</option>
+        <option value="budget">Under $1,000</option>
+        <option value="mid">$1,000 to $1,999</option>
+        <option value="premium">$2,000 and above</option>
+      </select>
+      <p id="product-count" role="status"></p>
+    </section>
+      <article class="card p-3 p-lg-4" id="starter" data-price="899">
         <span class="tier-badge px-3 py-1 mb-2">1080p Esports</span>
         <h3 class="tier-title mb-1">Starter</h3>
         <p class="tier-price mb-3">Starting at $899</p>
@@ -100,7 +112,7 @@
         <a href="order.html#build-type" class="btn btn-primary btn-lg px-3 py-2 mt-auto">Configure &amp; Order</a>
       </article>
 
-      <article class="card p-3 p-lg-4" id="pro">
+      <article class="card p-3 p-lg-4" id="pro" data-price="1599">
         <span class="tier-badge popular px-3 py-1 mb-2">Most Popular</span>
         <h3 class="tier-title mb-1">Pro</h3>
         <p class="tier-price mb-3">Starting at $1,599</p>
@@ -128,7 +140,7 @@
         <a href="order.html#build-type" class="btn btn-primary btn-lg px-3 py-2 mt-auto">Configure &amp; Order</a>
       </article>
 
-      <article class="card p-3 p-lg-4" id="ultra">
+      <article class="card p-3 p-lg-4" id="ultra" data-price="3499">
         <span class="tier-badge px-3 py-1 mb-2">4K Extreme</span>
         <h3 class="tier-title mb-1">Ultra</h3>
         <p class="tier-price mb-3">Starting at $3,499</p>
@@ -156,7 +168,8 @@
         <a href="order.html#build-type" class="btn btn-primary btn-lg px-3 py-2 mt-auto">Configure &amp; Order</a>
       </article>
     </div>
-   
+   <button type="button" id="load-products" class="btn btn-primary">Load more builds</button>
+   <p id="load-status" role="status"></p>
     <p id="rating-summary" class="rating-summary" aria-live="polite"></p>
 
    
@@ -265,7 +278,6 @@
 <script src="js/accordion.js"></script>
 <script src="js/popup.js"></script>
 <script src="js/rating.js"></script>
-<script src="js/sound-effects.js"></script>
-<script src="js/animations.js"></script>
+<script src="js/events.js"></script>
 </body>
 </html>

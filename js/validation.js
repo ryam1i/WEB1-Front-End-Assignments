@@ -4,11 +4,12 @@
   var form = document.getElementById('order-form');
   var nameInput = document.getElementById('full-name');
   var emailInput = document.getElementById('email');
+  var budgetInput = document.getElementById('budget');
   var passwordInput = document.getElementById('password');
   var confirmInput = document.getElementById('password-confirm');
   var successBox = document.getElementById('order-success');
 
-  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   function validateName() {
     var val = nameInput.value.trim();
@@ -31,6 +32,24 @@
     }
     emailInput.classList.remove('is-invalid');
     emailInput.classList.add('is-valid');
+    return true;
+  }
+
+  function validateBudget() {
+    if (!budgetInput) return true;
+    var val = budgetInput.value.trim();
+    if (val === '') {
+      budgetInput.classList.remove('is-invalid', 'is-valid');
+      return true;
+    }
+    var num = parseFloat(val);
+    if (isNaN(num) || num < 899) {
+      budgetInput.classList.add('is-invalid');
+      budgetInput.classList.remove('is-valid');
+      return false;
+    }
+    budgetInput.classList.remove('is-invalid');
+    budgetInput.classList.add('is-valid');
     return true;
   }
 
@@ -59,6 +78,9 @@
 
   nameInput.addEventListener('input', validateName);
   emailInput.addEventListener('input', validateEmail);
+  if (budgetInput) {
+    budgetInput.addEventListener('input', validateBudget);
+  }
   passwordInput.addEventListener('input', function () {
     validatePassword();
     if (confirmInput.value !== '') validateConfirm();
@@ -66,9 +88,9 @@
   confirmInput.addEventListener('input', validateConfirm);
 
   form.addEventListener('reset', function () {
-    var fields = [nameInput, emailInput, passwordInput, confirmInput];
+    var fields = [nameInput, emailInput, budgetInput, passwordInput, confirmInput];
     fields.forEach(function (el) {
-      el.classList.remove('is-valid', 'is-invalid');
+      if (el) el.classList.remove('is-valid', 'is-invalid');
     });
     successBox.classList.add('d-none');
   });
@@ -79,6 +101,7 @@
     var ok = true;
     if (!validateName()) ok = false;
     if (!validateEmail()) ok = false;
+    if (!validateBudget()) ok = false;
     if (!validatePassword()) ok = false;
     if (!validateConfirm()) ok = false;
 

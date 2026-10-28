@@ -98,9 +98,10 @@
           </div>
           <div class="mb-3">
             <label for="budget" class="form-label mb-2">Budget (optional)</label>
-            <div class="input-group">
+            <div class="input-group has-validation">
               <span class="input-group-text px-3 py-2" id="currency">USD $</span>
               <input type="number" id="budget" name="budget" class="form-control px-3 py-2" min="899" step="1" placeholder="e.g. 1800" aria-describedby="currency">
+              <div class="invalid-feedback">Budget must be a positive number of at least $899.</div>
             </div>
           </div>
           <fieldset class="mb-3">

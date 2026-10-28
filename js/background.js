@@ -2,34 +2,57 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'asnkipc-bg';
+  const STORAGE_KEY = 'asnkipc-bg';
+  const THEME_KEY = 'asnkipc-bg-theme';   
 
-  var PALETTE = [
-    { name: 'Default',      value: '' },
-    { name: 'Midnight Blue', value: '#0b1d3a' },
-    { name: 'Deep Purple',   value: '#24123f' },
-    { name: 'Forest',        value: '#0f2a20' },
-    { name: 'Crimson',       value: '#3a0f1a' },
-    { name: 'Slate',         value: '#1f2a37' },
-    { name: 'Teal',          value: '#0c2f33' },
-    { name: 'Graphite',      value: '#1c1c1e' }
-  ];
+  const PALETTES = {
+    dark: [
+      { name: 'Default',       value: '' },
+      { name: 'Midnight Blue', value: '#0b1d3a' },
+      { name: 'Deep Purple',   value: '#24123f' },
+      { name: 'Forest',        value: '#0f2a20' },
+      { name: 'Crimson',       value: '#3a0f1a' },
+      { name: 'Slate',         value: '#1f2a37' },
+      { name: 'Teal',          value: '#0c2f33' },
+      { name: 'Graphite',      value: '#1c1c1e' }
+    ],
+    light: [
+      { name: 'Default',  value: '' },
+      { name: 'Mint',     value: '#dff3e6' },
+      { name: 'Sky',      value: '#dbeafe' },
+      { name: 'Lavender', value: '#e9e1fb' },
+      { name: 'Peach',    value: '#fde6d8' },
+      { name: 'Lemon',    value: '#fbf3c9' },
+      { name: 'Rose',     value: '#fbe1e8' },
+      { name: 'Cloud',    value: '#e8edf2' }
+    ]
+  };
 
-  var index = 0;
-  var button, randomButton, label;
+  let index = 0;
+  let button, randomButton, label;
 
-  function readSaved() {
-    try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+  function currentTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  }
+  function palette() {
+    return PALETTES[currentTheme()];
+  }
+
+  function readSaved(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
   }
   function save(value) {
-    try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
+    try {
+      localStorage.setItem(STORAGE_KEY, value);
+      localStorage.setItem(THEME_KEY, currentTheme());
+    } catch (e) { /* storage blocked */ }
   }
 
   function applyColor(value, name) {
-    var targets = [document.documentElement, document.body];
-    targets.forEach(function (el) {
+    [document.documentElement, document.body].forEach(function (el) {
       if (value) {
-         el.style.setProperty('background', value, 'important');
+
+        el.style.setProperty('background', value, 'important');
       } else {
         el.style.removeProperty('background');
       }
@@ -38,30 +61,38 @@
     save(value);
   }
 
-  function randomDarkColor() {
-    var h = Math.floor(Math.random() * 360);
-    var s = 35 + Math.floor(Math.random() * 30);   
-    var l = 12 + Math.floor(Math.random() * 12);   
-    return 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
+  function randomThemeColor() {
+    const hue = Math.floor(Math.random() * 360);
+    if (currentTheme() === 'light') {
+      const s = 55 + Math.floor(Math.random() * 25);   
+      const l = 88 + Math.floor(Math.random() * 7);    
+      return 'hsl(' + hue + ', ' + s + '%, ' + l + '%)';
+    }
+    const s = 35 + Math.floor(Math.random() * 30);     
+    const l = 12 + Math.floor(Math.random() * 12);     
+    return 'hsl(' + hue + ', ' + s + '%, ' + l + '%)';
   }
-
 
   function nextColor() {
-    index = (index + 1) % PALETTE.length;
-    applyColor(PALETTE[index].value, PALETTE[index].name);
+    const colors = palette();
+    index = (index + 1) % colors.length;
+    applyColor(colors[index].value, colors[index].name);
   }
   function randomColor() {
-    applyColor(randomDarkColor(), 'Random');
+    applyColor(randomThemeColor(), 'Random');
   }
-
+  function resetColor() {
+    index = 0;
+    applyColor('', 'Default');
+  }
 
   function buildUI() {
     button = document.getElementById('bg-color-btn');
     randomButton = document.getElementById('bg-random-btn');
     label = document.getElementById('bg-color-label');
-    if (button) return;                 
+    if (button) return;                    
 
-    var box = document.createElement('div');
+    const box = document.createElement('div');
     box.className = 'js-bg-widget';
     box.setAttribute('role', 'group');
     box.setAttribute('aria-label', 'Background colour');
@@ -80,15 +111,16 @@
     buildUI();
     button.addEventListener('click', nextColor);
     if (randomButton) randomButton.addEventListener('click', randomColor);
+    document.addEventListener('themechange', resetColor);
 
     document.documentElement.classList.add('js-bg-transition');
     document.body.classList.add('js-bg-transition');
 
-    var saved = readSaved();
-    if (saved) {
-      var found = PALETTE.findIndex(function (c) { return c.value === saved; });
+    const saved = readSaved(STORAGE_KEY);
+    if (saved && readSaved(THEME_KEY) === currentTheme()) {
+      const found = palette().findIndex(function (c) { return c.value === saved; });
       if (found !== -1) index = found;
-      applyColor(saved, found !== -1 ? PALETTE[found].name : 'Random');
+      applyColor(saved, found !== -1 ? palette()[found].name : 'Random');
     }
   }
 

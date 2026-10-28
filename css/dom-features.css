@@ -171,3 +171,22 @@ html[data-theme="light"] .pc-popup::backdrop { background: rgb(20 33 26 / 55%); 
 @media (prefers-reduced-motion: reduce) {
   .star, .star.is-popped, .read-more-content { animation: none; transition: none; }
 }
+
+.review-card {
+  color: var(--text) !important;
+  background-color: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+  text-align: left !important;
+  align-items: stretch !important;
+}
+.review-card .review-author {
+  color: var(--text);
+}
+.review-card .review-comment {
+  color: var(--text);
+  opacity: 0.92;
+  line-height: 1.5;
+}
+.review-card .review-date {
+  color: var(--text-dim);
+}

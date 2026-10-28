@@ -1,6 +1,4 @@
-/* Task 5 — Display current date and time
-   Uses the JavaScript Date object, formatted like
-   "October 21, 2026, 10:45:32 AM" and refreshed every second.              */
+
 (function () {
   'use strict';
 
@@ -18,7 +16,7 @@
     var out = document.getElementById('datetime');
 
     if (!out) {
-      // Build the block and place it in the footer (or at the end of <body>)
+  
       var wrap = document.createElement('div');
       wrap.className = 'js-datetime';
       wrap.innerHTML = '<span class="js-datetime-label">Current date &amp; time:</span> ' +

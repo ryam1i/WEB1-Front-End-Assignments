@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Starter Plus",
+    "price": 999,
+    "image": "images/pc-entry.jpg",
+    "description": "A balanced 1080p build with 32GB RAM for gaming and everyday multitasking."
+  },
+  {
+    "name": "Creator",
+    "price": 1899,
+    "image": "images/pc-mid.jpg",
+    "description": "A versatile workstation for video editing, streaming and 1440p gaming."
+  },
+  {
+    "name": "Ultra Studio",
+    "price": 3999,
+    "image": "images/pc-ultra.jpg",
+    "description": "A premium configuration for demanding 3D projects and 4K gaming."
+  }
+]

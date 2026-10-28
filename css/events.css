@@ -1,0 +1,18 @@
+.event-controls {
+  padding: 1rem;
+  margin-block: 1rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.event-controls label { display: block; margin-bottom: .5rem; }
+.event-controls select { max-width: 24rem; }
+.event-controls output { display: inline-block; margin: .5rem 1rem; color: var(--text); }
+#product-grid [hidden], #order-form [hidden] { display: none !important; }
+#mainNavbar .nav-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+#step-status { color: var(--accent-2); font-weight: 600; }
+#order-form button:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; }
+#load-status, #product-count { margin-block: .75rem; }

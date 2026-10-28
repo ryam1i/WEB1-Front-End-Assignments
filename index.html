@@ -8,6 +8,8 @@
   <title>AsnkiPC — High-Performance Custom PCs</title>
   <link rel="stylesheet" href="css/member1.css">
 <link rel="stylesheet" href="css/js-features.css">
+<link rel="stylesheet" href="css/dom-features.css">
+<script src="js/theme.js"></script>
 </head>
 <body>
 
@@ -72,6 +74,16 @@
       <a href="catalog.html" class="btn-primary">Explore Catalog</a>
     </section>
 
+    <section class="read-more" aria-labelledby="about-title">
+      <h2 id="about-title">About AsnkiPC</h2>
+      <p>We build every PC to order: you choose the performance level, and we take care of the parts, the assembly and the testing.</p>
+      <div id="read-more-content" class="read-more-content">
+        <p>Pick one of our three ready builds &mdash; Starter for 1080p esports, Pro for 1440p gaming and streaming, or Ultra for 4K and creative work &mdash; or describe your own on the Custom Order page.</p>
+        <p>Before dispatch, every system goes through 24 hours of CPU, GPU and RAM stress testing. All components are brand new and come with a warranty of up to 3 years, and your PC travels in form-fitted protective packaging with an insured courier.</p>
+      </div>
+      <button type="button" id="read-more-btn" class="btn-secondary" aria-expanded="false" aria-controls="read-more-content">Read more</button>
+    </section>
+
     <section>
       <h2>Why Choose Our Builds</h2>
       <div class="card-grid">
@@ -119,5 +131,6 @@
 </script>
 <script src="js/background.js"></script>
 <script src="js/datetime.js"></script>
+<script src="js/readmore.js"></script>
 </body>
 </html>

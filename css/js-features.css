@@ -1,9 +1,6 @@
-/* Styles for JS features: background switcher (Task 4) and date/time block (Task 5) */
 
-/* smooth colour change */
 .js-bg-transition { transition: background-color .5s ease; }
 
-/* floating background widget */
 .js-bg-widget {
   position: fixed;
   right: 16px;
@@ -41,7 +38,6 @@
 .js-btn-secondary:hover { background: #334155; }
 .js-bg-label { opacity: .8; }
 
-/* date & time block */
 .js-datetime {
   margin-top: 6px;
   font-size: .9rem;

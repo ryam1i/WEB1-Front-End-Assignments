@@ -26,6 +26,14 @@
       if (field.id === 'full-name') {
         field.setCustomValidity(field.value.trim().length >= 2 ? '' : 'Enter at least 2 characters.');
       }
+      if (field.id === 'email') {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        field.setCustomValidity(emailRegex.test(field.value.trim()) ? '' : 'Enter a valid email address.');
+      }
+      if (field.id === 'budget' && field.value.trim() !== '') {
+        const num = parseFloat(field.value);
+        field.setCustomValidity(!isNaN(num) && num >= 899 ? '' : 'Budget must be at least $899.');
+      }
       if (field.id === 'password') {
         field.setCustomValidity(field.value.length >= 12 ? '' : 'Use at least 12 characters.');
       }

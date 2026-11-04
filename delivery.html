@@ -215,6 +215,98 @@
       </div>
     </section>
 
+
+    <section class="info-box p-3 p-md-4 mt-4" id="delivery-extras" aria-labelledby="delivery-extras-title">
+      <h2 id="delivery-extras-title">Delivery Extras &amp; Order Tracking</h2>
+      <p>Check the sample status of an order and review the extra delivery services available for your PC.</p>
+
+      <div class="row g-4 mt-1">
+        <div class="col-12 col-lg-6">
+          <div class="delivery-stat h-100 p-4">
+            <h3>Track your order</h3>
+            <form id="tracking-form" class="mt-3">
+              <label for="tracking-number" class="form-label">Order number</label>
+              <div class="input-group">
+                <input class="form-control" id="tracking-number" name="tracking-number"
+                       type="text" placeholder="Example: APC-2026-001" required>
+                <button class="btn btn-primary" type="submit">Track</button>
+              </div>
+              <p class="form-text">Demo order number: APC-2026-001</p>
+            </form>
+            <div id="tracking-result" class="mt-3" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <div class="delivery-stat h-100 p-4">
+            <h3>Optional delivery extras</h3>
+            <ul class="mb-0">
+              <li>Fragile-item handling for extra protection.</li>
+              <li>Scheduled delivery time by arrangement.</li>
+              <li>Setup assistance after the PC arrives.</li>
+              <li>Delivery status notifications.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-box p-3 p-md-4 mt-4" id="promo-courier" aria-labelledby="promo-courier-title">
+      <h2 id="promo-courier-title">Promo Codes &amp; Courier Contacts</h2>
+      <div class="row g-4 mt-1">
+        <div class="col-12 col-lg-6">
+          <div class="delivery-stat h-100 p-4">
+            <h3>Available demo promo code</h3>
+            <p class="mb-2">Use this sample code when discussing your delivery:</p>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <code id="delivery-promo-code" class="fs-5">SHIP10</code>
+              <button class="btn btn-outline-primary btn-sm" id="copy-promo-code" type="button">Copy code</button>
+            </div>
+            <p id="promo-copy-result" class="form-text mt-2" role="status" aria-live="polite">
+              Demo code only; no real discount is applied.
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="delivery-stat h-100 p-4">
+            <h3>Courier contacts</h3>
+            <p class="mb-1">For delivery questions, contact the store team:</p>
+            <p class="mb-1"><strong>Email:</strong> <a href="mailto:delivery@asnkipc.example">delivery@asnkipc.example</a></p>
+            <p class="mb-0"><strong>Phone:</strong> <a href="tel:+77000000000">+7 (700) 000-00-00</a></p>
+            <p class="form-text mt-2 mb-0">Placeholder contact details for the project demo. Replace with real contacts before publishing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-box p-3 p-md-4 mt-4" id="ready-builds" aria-labelledby="ready-builds-title">
+      <h2 id="ready-builds-title">Builds Ready to Ship</h2>
+      <p>Example systems that have completed assembly checks and are shown as ready for dispatch.</p>
+      <div class="row g-4 mt-1">
+        <article class="col-12 col-md-6 col-lg-4">
+          <div class="delivery-stat h-100 p-4">
+            <h3>Starter Gaming PC</h3>
+            <p class="mb-1"><strong>Status:</strong> Ready for dispatch</p>
+            <p class="mb-0">A compact entry-level gaming build, packed and awaiting courier pickup.</p>
+          </div>
+        </article>
+        <article class="col-12 col-md-6 col-lg-4">
+          <div class="delivery-stat h-100 p-4">
+            <h3>Performance Gaming PC</h3>
+            <p class="mb-1"><strong>Status:</strong> Final quality check</p>
+            <p class="mb-0">A performance-focused system completing its final inspection before packing.</p>
+          </div>
+        </article>
+        <article class="col-12 col-md-6 col-lg-4">
+          <div class="delivery-stat h-100 p-4">
+            <h3>Creator Workstation</h3>
+            <p class="mb-1"><strong>Status:</strong> Ready for dispatch</p>
+            <p class="mb-0">A workstation build that has passed its sample testing stage and is ready to ship.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
   </main>
 
   <footer id="site-footer">
@@ -232,5 +324,41 @@
   <script src="js/animations.js"></script>
   <script src="js/events.js"></script>
   <script src="js/theme.js"></script>
+  
+
+  <script>
+    $(function () {
+      $("#tracking-form").on("submit", function (event) {
+        event.preventDefault();
+        const orderNumber = $("#tracking-number").val().trim().toUpperCase();
+        const $result = $("#tracking-result");
+
+        if (orderNumber === "APC-2026-001") {
+          $result.html(
+            '<div class="alert alert-success mb-0"><strong>Order found (demo).</strong>' +
+            '<ol class="mb-0 mt-2"><li>Order confirmed</li><li>Assembly and testing completed</li>' +
+            '<li>Packed securely</li><li>Ready for courier pickup</li></ol></div>'
+          );
+        } else {
+          $result.html(
+            '<div class="alert alert-warning mb-0">No demo order was found. Try APC-2026-001.</div>'
+          );
+        }
+      });
+
+      $("#copy-promo-code").on("click", async function () {
+        const code = $("#delivery-promo-code").text().trim();
+        const $message = $("#promo-copy-result");
+
+        try {
+          await navigator.clipboard.writeText(code);
+          $message.text("Promo code copied: " + code);
+        } catch (error) {
+          $message.text("Your browser did not allow copying. Select the code manually: " + code);
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>

@@ -7,11 +7,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>AsnkiPC — High-Performance Custom PCs</title>
   <link rel="stylesheet" href="css/member1.css">
-<link rel="stylesheet" href="css/js-features.css">
-<link rel="stylesheet" href="css/dom-features.css">
-<script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/member2.css">
+  <link rel="stylesheet" href="css/js-features.css">
+  <link rel="stylesheet" href="css/dom-features.css">
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="js/member2.js"></script>
+  <script src="js/theme.js"></script>
 </head>
 <body>
+
+  <div id="scroll-progress-container" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div id="scroll-progress-bar"></div>
+  </div>
 
 <header id="main-header">
   <nav class="navbar navbar-expand-lg p-0" data-bs-theme="dark">
@@ -72,6 +79,46 @@
       <h1>High-Performance Custom PCs Delivered</h1>
       <p class="highlight">Engineered for competitive esports, seamless 4K gaming, and intensive creative workloads. Hand-built and rigorously stress-tested.</p>
       <a href="catalog.html" class="btn-primary">Explore Catalog</a>
+    </section>
+
+    <section id="stats-section" class="stats-section my-5" aria-labelledby="stats-heading">
+      <div class="stats-header text-center mb-4">
+        <h2 id="stats-heading" class="stats-title">Engineered for Victory in Numbers</h2>
+        <p class="stats-subtitle">Trusted by pro gamers, content creators, and competitive esports teams nationwide.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true">🖥️</div>
+          <div class="stat-number-wrap">
+            <span class="stat-number" data-target="1500" data-prefix="" data-suffix="+">0</span>
+          </div>
+          <p class="stat-label">Custom PCs Built</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true">⭐</div>
+          <div class="stat-number-wrap">
+            <span class="stat-number" data-target="99" data-prefix="" data-suffix="%">0</span>
+          </div>
+          <p class="stat-label">Customer Satisfaction</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true">🛡️</div>
+          <div class="stat-number-wrap">
+            <span class="stat-number" data-target="5" data-prefix="" data-suffix=" Years">0</span>
+          </div>
+          <p class="stat-label">Warranty & Coverage</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true">⚡</div>
+          <div class="stat-number-wrap">
+            <span class="stat-number" data-target="24" data-prefix="" data-suffix="/7">0</span>
+          </div>
+          <p class="stat-label">Stress Testing & Support</p>
+        </div>
+      </div>
     </section>
 
     <section class="read-more" aria-labelledby="about-title">

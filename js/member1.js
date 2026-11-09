@@ -45,51 +45,38 @@ $(document).ready(function () {
   }
 
   function highlightMatches(card, query) {
-    if (!query) return;
+  const title = card.querySelector('.tier-title');
+  if (!title) return;
 
-    const regex = new RegExp(escapeRegExp(query), 'gi');
-    const walker = document.createTreeWalker(card, NodeFilter.SHOW_TEXT);
-    const textNodes = [];
+  const text = title.textContent;
+  title.textContent = text;
 
-    while (walker.nextNode()) {
-      const node = walker.currentNode;
-      const parent = node.parentElement;
+  if (!query) return;
 
-      if (
-        node.nodeValue.trim() &&
-        parent &&
-        !parent.closest('script, style, mark')
-      ) {
-        textNodes.push(node);
-      }
-    }
+  const matcher = new RegExp(escapeRegExp(query), 'gi');
+  const fragment = document.createDocumentFragment();
+  let lastIndex = 0;
+  let match;
 
-    textNodes.forEach(function (node) {
-      const text = node.nodeValue;
-      const matcher = new RegExp(escapeRegExp(query), 'gi');
-      const fragment = document.createDocumentFragment();
-      let lastIndex = 0;
-      let match;
+  while ((match = matcher.exec(text)) !== null) {
+    fragment.appendChild(
+      document.createTextNode(text.slice(lastIndex, match.index))
+    );
 
-      while ((match = matcher.exec(text)) !== null) {
-        fragment.appendChild(
-          document.createTextNode(text.slice(lastIndex, match.index))
-        );
+    const mark = document.createElement('mark');
+    mark.className = 'search-highlight';
+    mark.textContent = match[0];
+    fragment.appendChild(mark);
 
-        const mark = document.createElement('mark');
-        mark.className = 'search-highlight';
-        mark.textContent = match[0];
-        fragment.appendChild(mark);
-
-        lastIndex = match.index + match[0].length;
-      }
-
-      if (lastIndex > 0) {
-        fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
-        node.parentNode.replaceChild(fragment, node);
-      }
-    });
+    lastIndex = match.index + match[0].length;
   }
+
+  fragment.appendChild(
+    document.createTextNode(text.slice(lastIndex))
+  );
+
+  title.replaceChildren(fragment);
+}
 
   function showSuggestions(query) {
     $suggestions.empty();

@@ -124,9 +124,9 @@ $(document).ready(function () {
 
       clearHighlights(card);
 
-      const matches = !query ||
-        card.textContent.toLowerCase().includes(query);
-
+      const title = $card.find('.tier-title').first().text().toLowerCase();
+      const matches = !query || title.includes(query);
+      
       $card.toggleClass('search-hidden', !matches);
 
       if (matches) {

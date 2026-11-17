@@ -197,17 +197,23 @@ html {
   }
 }
 
-.card-grid {
-  display: flex;
-  flex-wrap: wrap;
+
+main .card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
   align-items: stretch;
+  justify-content: stretch;
   margin-top: 1.5rem;
   margin-bottom: 3.5rem;
 }
 
-.card-grid .card {
+main .card-grid .card {
   display: flex;
+  flex: none;
+  width: auto;
+  max-width: none;
+  min-width: 0;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -281,26 +287,12 @@ html {
   flex-shrink: 0;
 }
 
-@media (min-width: 992px) {
-  .card-grid .card {
-    flex: 0 0 calc(33.333% - 14px);
-    max-width: calc(33.333% - 14px);
-  }
-}
-
 @media (min-width: 576px) and (max-width: 991.98px) {
-  .card-grid .card {
-    flex: 0 0 calc(50% - 10px);
-    max-width: calc(50% - 10px);
-  }
+  main .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 575.98px) {
-  .card-grid .card {
-    flex: 0 0 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
+  main .card-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 .navbar-nav .nav-link {

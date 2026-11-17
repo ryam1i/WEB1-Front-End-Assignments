@@ -192,16 +192,11 @@ html[data-theme="light"] .pc-popup::backdrop { background: rgb(20 33 26 / 55%); 
 }
 
 
-/* ---- Contrast fixes (final project review) ---- */
-
-/* Bootstrap helper text defaults to dark grey, which disappears on the dark theme. */
 .form-text { color: var(--text-dim); }
 
-/* Bootstrap colour utilities are tuned for white backgrounds; map them to theme tokens. */
 html:not([data-theme="light"]) .text-secondary { color: var(--text-dim) !important; }
 html:not([data-theme="light"]) .text-success { color: var(--accent-hover) !important; }
 
-/* Home page statistics block: use light panels instead of the dark glass card. */
 html[data-theme="light"] .stats-section {
   background: var(--panel);
   border-color: var(--border);
@@ -218,9 +213,7 @@ html[data-theme="light"] .stat-number {
 }
 html[data-theme="light"] .stat-label { color: var(--text); }
 
-/* Theme toggle: icon + label; on desktop only the icon, so the header stays on one row. */
 .theme-toggle { display: inline-flex; align-items: center; gap: .4rem; }
-/* The navbar expands at 1200px (navbar-expand-xl); below that the burger menu is used. */
 @media (min-width: 1200px) {
   #main-header .container { flex-wrap: nowrap; }
   #main-header .nav-link { white-space: nowrap; padding-inline: .6rem; }
@@ -231,6 +224,19 @@ html[data-theme="light"] .stat-label { color: var(--text); }
   }
 }
 
-/* Outline buttons (review filter, copy code): brighter green on dark, darker green on light. */
 .btn-outline-success { --bs-btn-color: var(--accent-hover); --bs-btn-border-color: var(--accent); }
 html[data-theme="light"] .btn-outline-success { --bs-btn-color: var(--accent); }
+
+.sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  line-height: 1;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.sound-toggle:hover { color: var(--text); }
+.sound-toggle.is-muted { color: var(--text-dim); opacity: .75; }
+.sound-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }

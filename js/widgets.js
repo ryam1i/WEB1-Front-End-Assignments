@@ -213,20 +213,6 @@ $(document).ready(function () {
     }
   });
 
-  $('#m3-track-form').on('submit', function (e) {
-    e.preventDefault();
-    var value = String($('#m3-track-input').val()).trim().toUpperCase();
-
-    if (!value) {
-      $.toast('Please enter your order number.', { type: 'warning' });
-    } else if (!/^ASN-\d{6}$/.test(value)) {
-      $.toast('Invalid format. Example: ASN-123456', { type: 'error', duration: 4000 });
-    } else {
-      $.toast('Request accepted! Order ' + value + ' is being prepared for courier pickup.', { type: 'success', duration: 4000 });
-      this.reset();
-    }
-  });
-
   $('#m3-say-hello').on('click', function () {
     $.toast('Thanks for stopping by! We will get back to you soon.', { type: 'info' });
   });

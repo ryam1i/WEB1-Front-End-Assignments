@@ -5,8 +5,26 @@ $(document).ready(function () {
   const $count = $('#product-count');
   const $priceFilter = $('#price-filter');
   let activeSuggestion = -1;
+  const SEARCH_KEY = 'asnkipc-catalog-search';
 
   if (!$search.length || !$grid.length) return;
+
+  function loadSavedSearch() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(SEARCH_KEY));
+      return saved && typeof saved === 'object' ? saved : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function saveSearch(query, price) {
+    try {
+      localStorage.setItem(SEARCH_KEY, JSON.stringify({ query: query, price: price }));
+    } catch (error) {
+      return;
+    }
+  }
 
   function getCards() {
     return $grid.find('article.card');
@@ -151,6 +169,7 @@ $(document).ready(function () {
     }
 
     showSuggestions(originalQuery);
+    saveSearch(originalQuery, $priceFilter.val());
   }
 
   function selectSuggestion(index) {
@@ -233,5 +252,16 @@ $(document).ready(function () {
 
   observer.observe($grid[0], { childList: true });
 
+  const savedSearch = loadSavedSearch();
+  if (savedSearch) {
+    if (typeof savedSearch.query === 'string') $search.val(savedSearch.query);
+    if ($priceFilter.find('option[value="' + savedSearch.price + '"]').length) {
+      $priceFilter.val(savedSearch.price);
+      $priceFilter[0].dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  }
+
   applySearch();
+  $suggestions.prop('hidden', true);
+  $search.attr('aria-expanded', 'false');
 });

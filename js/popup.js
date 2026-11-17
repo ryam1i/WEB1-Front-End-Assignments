@@ -1,43 +1,61 @@
-const popup = document.getElementById("subscribe-dialog");
-const openButton = document.getElementById("open-subscribe");
-const closeButton = document.getElementById("close-subscribe");
-const subscribeForm = document.getElementById("subscribe-form");
-const subscribeMessage = document.getElementById("subscribe-message");
+(function () {
+  'use strict';
 
-openButton.addEventListener("click", function () {
-  subscribeMessage.textContent = "";
-  popup.showModal();
-  document.body.classList.add("pc-popup-open");
-});
+  const popup = document.getElementById('subscribe-dialog');
+  const openButton = document.getElementById('open-subscribe');
+  const closeButton = document.getElementById('close-subscribe');
+  const subscribeForm = document.getElementById('subscribe-form');
+  const subscribeMessage = document.getElementById('subscribe-message');
+  if (!popup || !openButton || !subscribeForm) return;
 
-closeButton.addEventListener("click", function () {
-  popup.close();
-});
+  const V = window.AsnkiValidate;
+  const nameField = document.getElementById('subscriber-name');
+  const emailField = document.getElementById('subscriber-email');
+  const checkName = function () { return V.name(nameField.value); };
+  const checkEmail = function () { return V.email(emailField.value); };
 
-popup.addEventListener("click", function (event) {
-  const bounds = popup.getBoundingClientRect();
+  V.bind(nameField, checkName);
+  V.bind(emailField, checkEmail);
 
-  const clickedOutside =
-    event.clientX < bounds.left ||
-    event.clientX > bounds.right ||
-    event.clientY < bounds.top ||
-    event.clientY > bounds.bottom;
+  openButton.addEventListener('click', function () {
+    subscribeMessage.textContent = '';
+    popup.showModal();
+    document.body.classList.add('pc-popup-open');
+  });
 
-  if (event.target === popup && clickedOutside) {
+  closeButton.addEventListener('click', function () {
     popup.close();
-  }
-});
+  });
 
-popup.addEventListener("close", function () {
-  document.body.classList.remove("pc-popup-open");
-  openButton.focus();
-});
+  popup.addEventListener('click', function (event) {
+    const bounds = popup.getBoundingClientRect();
+    const clickedOutside =
+      event.clientX < bounds.left ||
+      event.clientX > bounds.right ||
+      event.clientY < bounds.top ||
+      event.clientY > bounds.bottom;
 
-subscribeForm.addEventListener("submit", function (event) {
-  event.preventDefault();
+    if (event.target === popup && clickedOutside) {
+      popup.close();
+    }
+  });
 
-  subscribeMessage.textContent =
-    "Thank you! This is a demo form; no subscription was sent.";
+  popup.addEventListener('close', function () {
+    document.body.classList.remove('pc-popup-open');
+    openButton.focus();
+  });
 
-  subscribeForm.reset();
-});
+  subscribeForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    subscribeMessage.textContent = '';
+
+    const nameOk = V.apply(nameField, checkName());
+    const emailOk = V.apply(emailField, checkEmail());
+    if (!nameOk) { nameField.focus(); return; }
+    if (!emailOk) { emailField.focus(); return; }
+
+    subscribeMessage.textContent = 'Thank you! This is a demo form; no subscription was sent.';
+    subscribeForm.reset();
+    V.reset(subscribeForm);
+  });
+})();

@@ -1,0 +1,39 @@
+.nav-auth[hidden] { display: none !important; }
+#mainNavbar button.nav-link { cursor: pointer; font: inherit; }
+
+.auth-panel { max-width: 560px; }
+.auth-panel .invalid-feedback { margin-top: .35rem; }
+
+.profile-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #06170c;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.profile-details {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: .6rem 1.25rem;
+  margin: 0;
+}
+.profile-details dt { color: var(--text-dim); font-weight: 500; }
+.profile-details dd { margin: 0; overflow-wrap: anywhere; }
+
+#profile-orders .list-group-item {
+  background: var(--panel-alt);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+@media (max-width: 480px) {
+  .profile-details { grid-template-columns: minmax(0, 1fr); gap: .15rem; }
+  .profile-details dd { margin-bottom: .6rem; }
+}

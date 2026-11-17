@@ -6,17 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>AsnkiPC — Pre-Built Custom PCs</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="js/member1.js"></script>
-  <link rel="stylesheet" href="css/member2.css">
+<script src="js/catalog-search.js"></script>
+  <link rel="stylesheet" href="css/catalog-order.css">
 <link rel="stylesheet" href="css/js-features.css">
 <link rel="stylesheet" href="css/dom-features.css">
 <script src="js/theme.js"></script>
-<link rel="stylesheet" href="css/member1_jquery.css">
+<link rel="stylesheet" href="css/catalog-search.css">
 </head>
-<body class="member2-page">
+<body class="shop-page">
   <header id="main-header">
-    <nav class="navbar navbar-expand-lg p-0" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-xl p-0" data-bs-theme="dark">
       <div class="container d-flex justify-content-between align-items-center">
 
         <a class="navbar-brand logo m-0" href="index.html">
@@ -54,6 +55,18 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="team.html">Our Team</a>
+            </li>
+            <li class="nav-item nav-auth" data-auth="guest">
+              <a class="nav-link" href="login.html">Log In</a>
+            </li>
+            <li class="nav-item nav-auth" data-auth="guest">
+              <a class="nav-link" href="signup.html">Sign Up</a>
+            </li>
+            <li class="nav-item nav-auth" data-auth="user" hidden>
+              <a class="nav-link" href="profile.html">Profile (<span data-auth-name></span>)</a>
+            </li>
+            <li class="nav-item nav-auth" data-auth="user" hidden>
+              <button type="button" class="nav-link" data-auth-logout>Log Out</button>
             </li>
           </ul>
         </div>
@@ -106,6 +119,15 @@
         <option value="mid">$1,000 to $1,999</option>
         <option value="premium">$2,000 and above</option>
       </select>
+      <label for="currency-select" class="mt-3">Show prices in</label>
+      <select id="currency-select" class="form-select">
+        <option value="USD">US Dollar (USD)</option>
+        <option value="EUR">Euro (EUR)</option>
+        <option value="GBP">British Pound (GBP)</option>
+        <option value="KZT">Kazakhstani Tenge (KZT)</option>
+        <option value="RUB">Russian Ruble (RUB)</option>
+      </select>
+      <p id="currency-status" role="status" aria-live="polite"></p>
       <p id="product-count" role="status"></p>
     </section>
       <article class="card p-3 p-lg-4" id="starter" data-price="899">
@@ -270,17 +292,19 @@
   <h2 id="popup-title">Subscribe to AsnkiPC</h2>
   <p>Enter your name and email below.</p>
 
-  <form id="subscribe-form">
+  <form id="subscribe-form" novalidate>
     <div class="form-field">
       <label for="subscriber-name">Name</label>
       <input type="text" id="subscriber-name" name="name"
-             autocomplete="given-name" required>
+             autocomplete="given-name">
+      <div class="invalid-feedback"></div>
     </div>
 
     <div class="form-field">
       <label for="subscriber-email">Email</label>
-      <input type="email" id="subscriber-email" name="email"
-             autocomplete="email" required>
+      <input type="text" id="subscriber-email" name="email"
+             autocomplete="email" inputmode="email">
+      <div class="invalid-feedback"></div>
     </div>
 
     <button type="submit" class="btn btn-primary">Subscribe</button>
@@ -291,12 +315,15 @@
 
   <footer id="site-footer">
     <div class="footer-inner">
-      <span class="team-credit">Timur Yukhnovets, Asanali Toleukhan, Etmakhambetov Abdrakhman.</span>
+      <span class="team-credit">Timur Yukhnovets, Asanali Toleukhan, Abdrakhman Etmakhambetov.</span>
     </div>
   </footer>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
+<script src="js/validators.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/currency.js"></script>
 <script src="js/background.js"></script>
 <script src="js/datetime.js"></script>
 <script src="js/accordion.js"></script>

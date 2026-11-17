@@ -28,7 +28,10 @@
     if (!button) return;
     const isDark = theme === 'dark';
 
-    button.textContent = isDark ? '☀️ Day mode' : '🌙 Night mode';
+    // Icon + text; the text is hidden on wide screens so the button fits in the navbar row.
+    button.innerHTML =
+      '<span class="theme-toggle__icon" aria-hidden="true">' + (isDark ? '☀️' : '🌙') + '</span>' +
+      '<span class="theme-toggle__text">' + (isDark ? 'Day mode' : 'Night mode') + '</span>';
     button.setAttribute('aria-label', isDark ? 'Switch to day mode' : 'Switch to night mode');
     button.setAttribute('aria-pressed', String(!isDark));
   }

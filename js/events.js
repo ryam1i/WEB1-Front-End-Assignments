@@ -99,6 +99,7 @@
       products.forEach(function (product) { fragment.appendChild(createProduct(product)); });
       grid.appendChild(fragment);
       filterProducts(); // Текущий фильтр применяется и к новым карточкам.
+      document.dispatchEvent(new CustomEvent('productsloaded'));
       loadStatus.textContent = 'All extra builds loaded. The selected price filter still applies.';
       loadButton.textContent = 'All builds loaded';
     } catch (error) {

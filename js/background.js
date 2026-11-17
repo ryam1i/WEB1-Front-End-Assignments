@@ -100,7 +100,9 @@
       '<button type="button" id="bg-color-btn" class="js-btn">🎨 Change background</button>' +
       '<button type="button" id="bg-random-btn" class="js-btn js-btn-secondary">🎲 Random</button>' +
       '<span id="bg-color-label" class="js-bg-label" aria-live="polite">Default</span>';
-    document.body.appendChild(box);
+    // Placed inside the footer (not fixed on screen) so it never covers page content on small screens.
+    const host = document.querySelector('#site-footer .footer-inner') || document.body;
+    host.appendChild(box);
 
     button = box.querySelector('#bg-color-btn');
     randomButton = box.querySelector('#bg-random-btn');

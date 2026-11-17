@@ -1,15 +1,27 @@
 (function () {
   'use strict';
+
   const form = document.getElementById('order-form');
   if (!form) return;
+
+  const V = window.AsnkiValidate;
   const steps = Array.from(form.querySelectorAll('[data-order-step]'));
   const back = document.getElementById('previous-step');
   const next = document.getElementById('next-step');
   const submit = document.getElementById('submit-order');
   const progress = document.getElementById('step-status');
   const success = document.getElementById('order-success');
+  const MIN_BUDGET = 899;
   let currentStep = 0;
-  form.noValidate = true; 
+
+  const rules = {
+    'full-name': function (field) { return V.name(field.value); },
+    'email': function (field) { return V.email(field.value); },
+    'phone': function (field) { return V.phone(field.value, false); },
+    'budget': function (field) { return V.budget(field.value, MIN_BUDGET); },
+    'password': function (field) { return V.password(field.value); },
+    'password-confirm': function (field) { return V.confirm(field.value, form.elements.password.value); }
+  };
 
   function showStep(index, moveFocus) {
     steps.forEach(function (step, stepIndex) { step.hidden = stepIndex !== index; });
@@ -21,69 +33,72 @@
   }
 
   function validateStep(index) {
-    const fields = Array.from(steps[index].querySelectorAll('input, select, textarea'));
-    for (const field of fields) {
-      if (field.id === 'full-name') {
-        field.setCustomValidity(field.value.trim().length >= 2 ? '' : 'Enter at least 2 characters.');
-      }
-      if (field.id === 'email') {
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        field.setCustomValidity(emailRegex.test(field.value.trim()) ? '' : 'Enter a valid email address.');
-      }
-      if (field.id === 'budget' && field.value.trim() !== '') {
-        const num = parseFloat(field.value);
-        field.setCustomValidity(!isNaN(num) && num >= 899 ? '' : 'Budget must be at least $899.');
-      }
-      if (field.id === 'password') {
-        field.setCustomValidity(field.value.length >= 12 ? '' : 'Use at least 12 characters.');
-      }
-      if (field.id === 'password-confirm') {
-        field.setCustomValidity(field.value !== '' && field.value === form.querySelector('#password').value
-          ? '' : 'Passwords must match.');
-      }
-      const valid = field.checkValidity();
-      field.classList.toggle('is-invalid', !valid);
-      if (!valid) {
-        showStep(index, false);
-        field.reportValidity();
-        return false;
-      }
+    let firstInvalid = null;
+    steps[index].querySelectorAll('input, select, textarea').forEach(function (field) {
+      const rule = rules[field.id];
+      if (!rule) return;
+      if (!V.apply(field, rule(field)) && !firstInvalid) firstInvalid = field;
+    });
+    if (firstInvalid) {
+      firstInvalid.focus();
+      return false;
     }
     return true;
   }
 
-  function changeStep(direction, callback) {
+  function changeStep(direction) {
     if (direction > 0 && !validateStep(currentStep)) return;
     currentStep = Math.max(0, Math.min(steps.length - 1, currentStep + direction));
     success.hidden = true;
-    callback(currentStep, true);
+    showStep(currentStep, true);
   }
-  next.addEventListener('click', function () { changeStep(1, showStep); });
-  back.addEventListener('click', function () { changeStep(-1, showStep); });
-  form.addEventListener('input', function (event) {
-    event.target.setCustomValidity('');
-    event.target.classList.remove('is-invalid');
-    success.hidden = true;
+
+  Object.keys(rules).forEach(function (id) {
+    const field = document.getElementById(id);
+    if (!field) return;
+    V.bind(field, function () { return rules[id](field); });
   });
+  document.getElementById('password').addEventListener('input', function () {
+    const confirm = document.getElementById('password-confirm');
+    if (confirm.value) V.apply(confirm, rules['password-confirm'](confirm));
+  });
+
+  next.addEventListener('click', function () { changeStep(1); });
+  back.addEventListener('click', function () { changeStep(-1); });
+  form.addEventListener('input', function () { success.hidden = true; });
+
+  function collectOrder() {
+    const buildSelect = form.elements['build-type'];
+    const delivery = form.querySelector('input[name="delivery"]:checked');
+    return {
+      buildType: buildSelect.options[buildSelect.selectedIndex].text.split(' (')[0],
+      budget: form.elements.budget.value.trim(),
+      delivery: delivery ? delivery.nextElementSibling.textContent.trim() : ''
+    };
+  }
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     if (currentStep < steps.length - 1) {
-      changeStep(1, showStep);
+      changeStep(1);
       return;
     }
     for (let index = 0; index < steps.length; index += 1) {
       if (!validateStep(index)) {
         currentStep = index;
+        showStep(currentStep, false);
+        validateStep(index);
         return;
       }
     }
+    if (window.AsnkiAuth) window.AsnkiAuth.saveOrder(collectOrder());
     success.textContent = 'Configuration completed. Demo only: no order has been sent.';
     success.hidden = false;
     success.focus();
   });
 
   document.getElementById('clear-order').addEventListener('click', function () { form.reset(); });
+
   form.addEventListener('reset', function (event) {
     event.preventDefault();
     form.querySelectorAll('input').forEach(function (input) {
@@ -95,22 +110,29 @@
     form.querySelectorAll('select').forEach(function (select) {
       Array.from(select.options).forEach(function (option) { option.selected = option.defaultSelected; });
     });
-    form.querySelectorAll('input, select, textarea').forEach(function (field) {
-      field.setCustomValidity('');
-      field.classList.remove('is-valid', 'is-invalid');
-    });
+    V.reset(form);
     success.hidden = true;
     currentStep = 0;
     showStep(currentStep, true);
   });
 
-  showStep(currentStep, false);
+  function prefillFromAccount() {
+    const user = window.AsnkiAuth && window.AsnkiAuth.currentUser();
+    if (!user) return;
+    form.elements['full-name'].value = user.name;
+    form.elements.email.value = user.email;
+    form.elements.phone.value = user.phone;
+  }
+
   function followBuildLink() {
     if (window.location.hash === '#build-type') {
       currentStep = 1;
       showStep(currentStep, true);
     }
   }
+
+  prefillFromAccount();
+  showStep(currentStep, false);
   followBuildLink();
   window.addEventListener('hashchange', followBuildLink);
 })();

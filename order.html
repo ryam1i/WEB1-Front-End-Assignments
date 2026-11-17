@@ -6,17 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>Build Your PC — Order Form | AsnkiPC</title>
-  <link rel="stylesheet" href="css/member2.css">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/catalog-order.css">
   <link rel="stylesheet" href="css/js-features.css">
   <link rel="stylesheet" href="css/dom-features.css">
-  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
-  <script src="js/member2.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/ui-effects.js"></script>
   <script src="js/theme.js"></script>
 </head>
-<body class="member2-page">
+<body class="shop-page">
 
   <header id="main-header">
-    <nav class="navbar navbar-expand-lg p-0" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-xl p-0" data-bs-theme="dark">
       <div class="container d-flex justify-content-between align-items-center">
 
         <a class="navbar-brand logo m-0" href="index.html">
@@ -55,6 +56,18 @@
             <li class="nav-item">
               <a class="nav-link" href="team.html">Our Team</a>
             </li>
+            <li class="nav-item nav-auth" data-auth="guest">
+              <a class="nav-link" href="login.html">Log In</a>
+            </li>
+            <li class="nav-item nav-auth" data-auth="guest">
+              <a class="nav-link" href="signup.html">Sign Up</a>
+            </li>
+            <li class="nav-item nav-auth" data-auth="user" hidden>
+              <a class="nav-link" href="profile.html">Profile (<span data-auth-name></span>)</a>
+            </li>
+            <li class="nav-item nav-auth" data-auth="user" hidden>
+              <button type="button" class="nav-link" data-auth-logout>Log Out</button>
+            </li>
           </ul>
         </div>
 
@@ -71,20 +84,25 @@
     </section>
 
     <section class="form-panel p-3 p-sm-4 mx-auto" aria-label="Build configuration form">
-      <form id="order-form" aria-describedby="form-note">
+      <form id="order-form" aria-describedby="form-note" novalidate>
         <p id="step-status" role="status"></p>
         <fieldset class="mb-4" data-order-step>
           <legend class="mb-3">Contact Details</legend>
           <div class="row g-3">
             <div class="col-md-6">
               <label for="full-name" class="form-label mb-2">Full Name (required)</label>
-              <input type="text" id="full-name" name="full-name" class="form-control px-3 py-2" placeholder="e.g. Aliya Kenzhebekova" autocomplete="name" minlength="2" required>
+              <input type="text" id="full-name" name="full-name" class="form-control px-3 py-2" placeholder="e.g. Aliya Kenzhebekova" autocomplete="name">
               <div class="invalid-feedback">Please enter your full name (at least 2 characters).</div>
             </div>
             <div class="col-md-6">
               <label for="email" class="form-label mb-2">Email Address (required)</label>
-              <input type="email" id="email" name="email" class="form-control px-3 py-2" placeholder="you@example.com" autocomplete="email" required>
+              <input type="text" id="email" name="email" class="form-control px-3 py-2" placeholder="you@example.com" autocomplete="email" inputmode="email">
               <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label mb-2">Phone Number (required)</label>
+              <input type="tel" id="phone" name="phone" class="form-control px-3 py-2" placeholder="+7 700 123 4567" autocomplete="tel" inputmode="tel">
+              <div class="invalid-feedback">Please enter a valid phone number.</div>
             </div>
           </div>
         </fieldset>
@@ -104,7 +122,7 @@
             <label for="budget" class="form-label mb-2">Budget (optional)</label>
             <div class="input-group has-validation">
               <span class="input-group-text px-3 py-2" id="currency">USD $</span>
-              <input type="number" id="budget" name="budget" class="form-control px-3 py-2" min="899" step="1" placeholder="e.g. 1800" aria-describedby="currency">
+              <input type="text" id="budget" name="budget" class="form-control px-3 py-2" inputmode="decimal" placeholder="e.g. 1800" aria-describedby="currency">
               <div class="invalid-feedback">Budget must be a positive number of at least $899.</div>
             </div>
           </div>
@@ -130,8 +148,8 @@
           <div class="row g-3">
             <div class="col-md-6">
               <label for="password" class="form-label mb-2">Password (required)</label>
-              <input type="password" id="password" name="password" class="form-control px-3 py-2" placeholder="At least 12 characters" autocomplete="new-password">
-              <div class="invalid-feedback">Password must be at least 12 characters long.</div>
+              <input type="password" id="password" name="password" class="form-control px-3 py-2" placeholder="8+ chars, upper, lower, digit, symbol" autocomplete="new-password">
+              <div class="invalid-feedback">Please choose a stronger password.</div>
             </div>
             <div class="col-md-6">
               <label for="password-confirm" class="form-label mb-2">Confirm Password (required)</label>
@@ -165,12 +183,14 @@
 
   <footer id="site-footer">
     <div class="footer-inner">
-      <span class="team-credit">Timur Yukhnovets, Asanali Toleukhan, Etmakhambetov Abdrakhman.</span>
+      <span class="team-credit">Timur Yukhnovets, Asanali Toleukhan, Abdrakhman Etmakhambetov.</span>
     </div>
   </footer>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
+<script src="js/validators.js"></script>
+<script src="js/auth.js"></script>
 <script src="js/background.js"></script>
 <script src="js/datetime.js"></script>
 <script src="js/order-steps.js"></script>

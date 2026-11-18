@@ -240,3 +240,47 @@ html[data-theme="light"] .btn-outline-success { --bs-btn-color: var(--accent); }
 .sound-toggle:hover { color: var(--text); }
 .sound-toggle.is-muted { color: var(--text-dim); opacity: .75; }
 .sound-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Promo code on the delivery page: site green instead of Bootstrap pink/blue. */
+#delivery-promo-code { color: var(--accent-hover); }
+html[data-theme="light"] #delivery-promo-code { color: var(--accent); }
+.btn-outline-primary {
+  --bs-btn-color: var(--accent-hover);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-color: #06170c;
+  --bs-btn-hover-bg: var(--accent-hover);
+  --bs-btn-hover-border-color: var(--accent-hover);
+}
+html[data-theme="light"] .btn-outline-primary {
+  --bs-btn-color: var(--accent);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+}
+
+/* Review stars: default Bootstrap yellow is too pale on a white background. */
+html[data-theme="light"] .text-warning { color: #b45309 !important; }
+
+/* Home page statistics (dark theme): same neutral panels and green accent as the rest of the site,
+   instead of the navy glass background. */
+.stats-section {
+  background: var(--panel);
+  border-color: var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.stats-subtitle { color: var(--text-dim); }
+.stat-card {
+  background: var(--panel-alt);
+  border-color: var(--border);
+}
+.stat-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 12px 28px rgba(21, 156, 71, .18);
+}
+.stat-number {
+  color: var(--accent-hover);
+  text-shadow: none;
+}
+.stat-label { color: var(--text-dim); }
